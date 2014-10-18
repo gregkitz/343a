@@ -139,28 +139,51 @@
 //Pre: the "toCopy" tree is NULL
 //Post: A deep copy of the RHS tree to the toCopy tree
 
-	void BinTree::recursiveAssign(Node * copied, Node* RHS) const{
+	void BinTree::recursiveAssign(Node *& copied, Node* RHS) const {
 		//check if the current pointer is NULL (
-		if (RHS == NULL){
-			copied = RHS; //assign empty tree (would produce memory leak if pre not met)
+		if (RHS != NULL){
+			//create new node object for insert
+			Node * temp = new Node;
+			//copy the data to a new nodeData object 
+			NodeData * tempNode = new NodeData(*RHS->data);
+			//Assign nodedata to new node
+			temp->data = tempNode;
+			//assign it to LHS
+			copied = temp;
+			//recursively do this left then right
+			recursiveAssign(copied->left, RHS->left);
+			recursiveAssign(copied->right, RHS->right);
+			
 		}
 		else{
-			//create new node object for insert
-			Node * temp = new Node; 
-			//copy the data to a new nodeData object 
-			NodeData * tempNode= new NodeData(*RHS->data); 
-			//Assign nodedata to new node
-			*temp->data = *tempNode; 
-			//assign it to LHS
-			copied = temp; 
-			//recursively do this left then right
-			recursiveAssign(copied->left, RHS->left); 
-			recursiveAssign(copied->right, RHS->right); 
+			copied = RHS; //assign empty tree (would produce memory leak if pre not met)
 		}
 	}
 
 	void BinTree::recursiveAssignHelper(const BinTree & RHS){
-		recursiveAssign(RHS.root, root); 
+		recursiveAssign(root, RHS.root); 
+
+	}
+
+
+	//Print Tree Functions
+
+	//
+
+	void BinTree::printTreePreOrder(){
+		printTreePreeHelper(root); 
+	}
+	void BinTree::printTreePreeHelper(Node * toPrint){
+		//if node is not null print it
+		if (toPrint != NULL) {
+			cout << *toPrint->data;
+			//then recurse lefthand then right
+			printTreePreeHelper(toPrint->left); 
+			printTreePreeHelper(toPrint->right); 
+		}
+		else {
+			//it's null, don't do anything
+		}
 
 	}
 	

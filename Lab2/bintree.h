@@ -23,7 +23,7 @@ public:
 	
 	void makeEmptyHelper(); 
 	BinTree& operator=(const BinTree &);
-	void recursiveAssign(Node *, Node*) const; //recursively assigns
+	void recursiveAssign(Node *&, Node*) const; //recursively assigns
 	void recursiveAssignHelper(const BinTree &); 
 	bool operator==(const BinTree &) const;
 	bool operator!=(const BinTree &) const;
@@ -31,6 +31,8 @@ public:
 	bool retrieve(...) const;
 	void displaySideways() const;			// provided below, displays the tree sideways
 	void deleteRoot(); 
+	void printTreePreOrder(); 
+	void printTreePreeHelper(Node *); 
 	
 
 	
