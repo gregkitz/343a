@@ -4,12 +4,14 @@
 	BinTree::BinTree(){
 		root = NULL; 
 	}// constructor
+
+	// copy constructor
 	BinTree::BinTree(const BinTree &){
+		//Use assignment operator? 
 
 
 
-
-	}		// copy constructor
+	}		
 	BinTree::~BinTree(){
 	
 		makeEmptyHelper(); 
@@ -36,7 +38,7 @@
 		if (ptr == NULL) return false; //out of memory
 		ptr->data = dataPtr; 
 		ptr->left = ptr->right = NULL; 
-		if (isEmpty()){
+		if (isEmpty()){ //if the tree is empty insert to the root
 			root = ptr; 
 		}
 		else{
@@ -120,6 +122,45 @@
 		delete currentNode->data; 
 		delete currentNode; 
 		currentNode = NULL; 
+
+	}
+
+
+	//Assignment Operator 
+
+	BinTree& BinTree::operator=(const BinTree & RHS){
+
+
+		return  *this; 
+	}
+	
+//RecursiveAssign
+//Assigns all of the data in one tree to another
+//Pre: the "toCopy" tree is NULL
+//Post: A deep copy of the RHS tree to the toCopy tree
+
+	void BinTree::recursiveAssign(Node * copied, Node* RHS) const{
+		//check if the current pointer is NULL (
+		if (RHS == NULL){
+			copied = RHS; //assign empty tree (would produce memory leak if pre not met)
+		}
+		else{
+			//create new node object for insert
+			Node * temp = new Node; 
+			//copy the data to a new nodeData object 
+			NodeData * tempNode= new NodeData(*RHS->data); 
+			//Assign nodedata to new node
+			*temp->data = *tempNode; 
+			//assign it to LHS
+			copied = temp; 
+			//recursively do this left then right
+			recursiveAssign(copied->left, RHS->left); 
+			recursiveAssign(copied->right, RHS->right); 
+		}
+	}
+
+	void BinTree::recursiveAssignHelper(const BinTree & RHS){
+		recursiveAssign(RHS.root, root); 
 
 	}
 	
