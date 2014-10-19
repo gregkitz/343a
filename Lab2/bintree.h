@@ -2,6 +2,7 @@
 
 class BinTree {				// you add class/method comments and assumptions
 	//class methods and assumptions
+	friend ostream& operator<< (ostream &, const BinTree &);
 
 private:
 	struct Node {
@@ -21,7 +22,7 @@ public:
 	~BinTree();								// destructor, calls makeEmpty	
 	bool isEmpty() const;					// true if tree is empty, otherwise false
 	void makeEmpty();						// make the tree empty so isEmpty returns true
-	void makeEmptyHelper(Node *);
+	void makeEmptyHelper(Node *&);
 	BinTree& operator=(const BinTree &);
 	void recursiveAssign(Node *&, Node*) const; //recursively assigns
 	void recursiveAssignHelper(const BinTree &); 
@@ -35,8 +36,14 @@ public:
 	void deleteRoot(); 
 	void printTreePreOrder(); 
 	void printTreePreeHelper(Node *); 
-	int BinTree::getHeight(const NodeData &);
+	int getHeight(const NodeData &);
 	int getHeightHelper(Node*, const NodeData &, int&);
+	void inOrderDisplay(Node *curPtr) const;
+	int bstreeToArrayHelper(Node* curPtr, NodeData *tempArray[]);
+	void bstreeToArray(NodeData* tempArray[]);  
+	void arrayToBSTree(NodeData* tempArray[]);
+	void arrayToBSTreeHelper(NodeData* tempArray[], const Node* curPtr, int low, int high);
+
 	
 
 	

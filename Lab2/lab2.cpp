@@ -49,8 +49,8 @@ int main() {
 	BinTree first(T);                  // test copy constructor
 	dup = dup = T;                     // test operator=, self-assignment
 	while (!infile.eof()) {
-		//cout << "Tree Inorder:" << endl << T;             // operator<< does endl
-		//T.displaySideways();
+		cout << "Tree Inorder:" << endl << T;             // operator<< does endl
+		T.displaySideways();
 
 		// test retrieve 
 		NodeData* p;                    // pointer of retrieved object
@@ -76,12 +76,14 @@ int main() {
 		cout << "T != first?  " << (T != first ? "not equal" : "equal") << endl;
 		cout << "T == dup?    " << (T == dup ? "equal" : "not equal") << endl;
 		dup = T;
-
-//		// somewhat test bstreeToArray and arrayToBSTree
-//		T.bstreeToArray(ndArray);
-//		T.arrayToBSTree(ndArray);
-//		T.displaySideways();
-
+		
+		// somewhat test bstreeToArray and arrayToBSTree
+	/*	T.bstreeToArray(ndArray);
+		cout << T << "T" << endl; 
+		T.arrayToBSTree(ndArray);
+		
+		T.displaySideways();*/
+		cout << "can you see this line?" << endl;
 		T.makeEmpty();                  // empty out the tree
 		initArray(ndArray);             // empty out the array
 
