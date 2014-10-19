@@ -76,14 +76,12 @@ int main() {
 		cout << "T != first?  " << (T != first ? "not equal" : "equal") << endl;
 		cout << "T == dup?    " << (T == dup ? "equal" : "not equal") << endl;
 		dup = T;
-		
+
 		// somewhat test bstreeToArray and arrayToBSTree
-	/*	T.bstreeToArray(ndArray);
-		cout << T << "T" << endl; 
+		T.bstreeToArray(ndArray);
 		T.arrayToBSTree(ndArray);
-		
-		T.displaySideways();*/
-		cout << "can you see this line?" << endl;
+		T.displaySideways();
+
 		T.makeEmpty();                  // empty out the tree
 		initArray(ndArray);             // empty out the array
 
@@ -92,8 +90,10 @@ int main() {
 		cout << "Initial data:" << endl << "  ";
 		buildTree(T, infile);
 		cout << endl;
+		
 	}
-
+	int a;
+	cin >> a;
 	return 0;
 }
 

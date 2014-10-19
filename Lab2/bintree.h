@@ -37,8 +37,8 @@ public:
 	void printTreePreOrder(); 
 	void printTreePreeHelper(Node *); 
 	int getHeight(const NodeData &);
-	int getHeightHelper(Node*, const NodeData &, int&);
-	void inOrderDisplay(Node *curPtr) const;
+	int getHeightHelper(Node*&, const NodeData &, int &);
+	void inOrderTransversal(Node *curPtr) const;
 	int bstreeToArrayHelper(Node* curPtr, NodeData *tempArray[]);
 	void bstreeToArray(NodeData* tempArray[]);  
 	void arrayToBSTree(NodeData* tempArray[]);

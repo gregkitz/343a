@@ -48,10 +48,10 @@
 			// otherwise insert in right subtree
 			while (!inserted)
 			{
-				cout << "loop" << endl; 
+			
 				if (*ptr->data == *current->data) //Duplicate found, dont allow insert
 				{
-					cout << "loop?" << endl; 
+					
 					delete ptr; //Handle duplicate properly
 					ptr = NULL;
 					return false;
@@ -259,46 +259,51 @@
 			}
 			
 		}
-		if (current == NULL ^ RHS == NULL){
+		if ((current == NULL) ^ (RHS == NULL)){
 			isEqual = false;
 		}
 	}
 
 	int BinTree::getHeight(const NodeData & toFind) {
 		int height = 0; 
-		height = getHeightHelper(root, toFind, height); 
+		getHeightHelper(root, toFind, height); 
 		return height; 
 
 	}
 
-	int BinTree::getHeightHelper(Node * current, const NodeData & theNode,  int & theHeight){
+	int BinTree::getHeightHelper(Node *& current, const NodeData & theNode,  int & theHeight){
 		if (!current) return 0;
 		int left_height = getHeightHelper(current->left, theNode, theHeight);
 		int right_height = getHeightHelper(current->right, theNode,  theHeight);
 		if (*current->data == theNode){
-			theHeight = left_height > right_height ? left_height : right_height;
+			theHeight = (left_height > right_height) ? left_height+1 : right_height+1;
 		}
 		return (left_height > right_height) ? left_height + 1 : right_height + 1;
 	}
+
+
+
+
 	void BinTree::bstreeToArray(NodeData* tempArray[])
 	{
 		bstreeToArrayHelper(root, tempArray);
-		makeEmpty(); //Make BST empty
+		makeEmpty(); 
 	}
-	int BinTree::bstreeToArrayHelper(Node* curPtr, NodeData *tempArray[])
+	int BinTree::bstreeToArrayHelper(Node* current, NodeData *tempArray[])
 	{
-		if (curPtr == NULL) //No data
+		if (current == NULL) {
 			return 0;
-		//Set location of left
-		int left = bstreeToArrayHelper(curPtr->left, tempArray);
+		}
+		
+		int left = bstreeToArrayHelper(current->left, tempArray);
 		NodeData *temp;
-		temp = curPtr->data; // save the pointer to NodeData object to temp
-		curPtr->data = NULL; // disconnect NodeData from Node
-		*(tempArray + left) = temp; //tempArray points to temp
-		temp = NULL; //Disconnect
-		//set location of right
-		int right = bstreeToArrayHelper(curPtr->right, tempArray + left + 1);
-		return left + right + 1; //Return position
+		temp = current->data; 
+		current->data = NULL; 
+		*(tempArray + left) = temp; 
+		temp = NULL; 
+		
+		int right = bstreeToArrayHelper(current->right, tempArray + left + 1);
+		return left + right + 1; 
 	}
 
 	void BinTree::arrayToBSTree(NodeData* tempArray[])
@@ -315,48 +320,55 @@
 		
 		arrayToBSTreeHelper(tempArray, root, 0, high - 1);
 	}
-	void BinTree::arrayToBSTreeHelper(NodeData* tempArray[], const Node* curPtr, int low, int high)
+	void BinTree::arrayToBSTreeHelper(NodeData* tempArray[], const Node* current, int low, int high)
 	{
 		
 		if (low > high) //end
-			curPtr = NULL;
+			current = NULL;
 		else
 		{
-			int root = (low + high) / 2; //Location of data to insert recursively at root
+			int root = (low + high) / 2; 
 			NodeData *temp;
-			temp = tempArray[root]; //set temp to point to NodeData* in array
-			tempArray[root] = NULL; //disconnect tempArray from the Nodedata
+			temp = tempArray[root];
+			tempArray[root] = NULL; 
 			
-			insert(temp); //insert NodeData to BST
-			//check left array
-			arrayToBSTreeHelper(tempArray, curPtr, low, root - 1);
-			//check right array
-			arrayToBSTreeHelper(tempArray, curPtr, root + 1, high);
+			insert(temp); 
+			
+			arrayToBSTreeHelper(tempArray, current, low, root - 1);
+			
+			arrayToBSTreeHelper(tempArray, current, root + 1, high);
 		}
 	}
 
 	
 
-	ostream& operator<<(ostream& output, const BinTree& bst)
+	ostream& operator<<(ostream& output, const BinTree& tree)
 	{
-		bst.inOrderDisplay(bst.root); //call inOrderDisplay
+		tree.inOrderTransversal(tree.root); 
 		output << endl;
 		return output;
 	}
-	void BinTree::inOrderDisplay(Node *curPtr) const
+	void BinTree::inOrderTransversal(Node * current) const
 	{
-		if (curPtr != NULL) //Traverse inorder and print data
+		if (current != NULL) //Traverse inorder and print data
 		{
-			inOrderDisplay(curPtr->left);
-			cout << *curPtr->data << " ";
-			inOrderDisplay(curPtr->right);
+			inOrderTransversal(current->left);
+			cout << *current->data << " ";
+			inOrderTransversal(current->right);
 		}
 	}
-
+	//------------------------- displaySideways ---------------------------------
+	// Displays a binary tree as though you are viewing it from the side;
+	// hard coded displaying to standard output.
+	// Preconditions: NONE
 	void BinTree::displaySideways() const
 	{
 		sideways(root, 0);
 	}
+	//---------------------------- Sideways -------------------------------------
+	// Helper method for displaySideways
+	// Preconditions: NONE
+	// Postconditions: BinTree remains unchanged.
 	void BinTree::sideways(Node* current, int level) const
 	{
 		if (current != NULL) {
