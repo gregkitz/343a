@@ -12,7 +12,7 @@
 	}		
 	BinTree::~BinTree(){
 	
-		makeEmptyHelper(); 
+		makeEmpty(); 
 		//delete root; 
 		//root = NULL; 
 
@@ -76,10 +76,10 @@
 //Make empty helper. Checks root and if not null calls make empty
 //either way clears the root node at the end 
 
-	void BinTree::makeEmptyHelper(){
+	void BinTree::makeEmpty(){
 		if (!isEmpty()){
 			//call make empty on the root 
-			makeEmpty(root);
+			makeEmptyHelper(root);
 			//deleteRoot(); 
 		}
 
@@ -97,17 +97,17 @@
 //Pre:
 //Post:
 
-	void BinTree::makeEmpty(Node * currentNode){
+	void BinTree::makeEmptyHelper(Node * currentNode){
 		//clears the tree recursively 
 		
 		//if the left child isn't null call make empty on it 
 		// if the right child isn't null call make empty on it 
 		// otherwise, delete the current node and it's child pointers
 		if (currentNode->left != NULL){
-			makeEmpty(currentNode->left); 
+			makeEmptyHelper(currentNode->left); 
 		}
 		if (currentNode->right != NULL){
-			makeEmpty(currentNode->right); 
+			makeEmptyHelper(currentNode->right); 
 		}
 		delete currentNode->data; 
 		delete currentNode; 
@@ -121,7 +121,7 @@
 	BinTree& BinTree::operator=(const BinTree & RHS){
 		//remember to test for self-assignment
 		if (this !=  &RHS){
-			makeEmpty(root); //clear current
+			makeEmpty(); //clear current
 			recursiveAssign(root, RHS.root); //assign 
 			return *this; //return this' address
 
@@ -237,7 +237,7 @@
 			//if they don't equal make the update and stop recursing
 			if (*current->data != *RHS->data){
 				isEqual = false;
-				cout << "I have determined that they are not equal " << endl; 
+				
 			}
 			else{
 					//continue on LH and RH
@@ -254,16 +254,15 @@
 
 	int BinTree::getHeight(const NodeData & toFind) {
 		int height = 0; 
-		bool isFound = false; 
-		height = getHeightHelper(root, toFind, isFound, height); 
+		height = getHeightHelper(root, toFind, height); 
 		return height; 
 
 	}
 
-	int BinTree::getHeightHelper(Node * current, const NodeData & theNode, bool & isFound, int & theHeight){
+	int BinTree::getHeightHelper(Node * current, const NodeData & theNode,  int & theHeight){
 		if (!current) return 0;
-		int left_height = getHeightHelper(current->left, theNode, isFound, theHeight);
-		int right_height = getHeightHelper(current->right, theNode, isFound, theHeight);
+		int left_height = getHeightHelper(current->left, theNode, theHeight);
+		int right_height = getHeightHelper(current->right, theNode,  theHeight);
 		if (*current->data == theNode){
 			theHeight = left_height > right_height ? left_height : right_height;
 		}

@@ -20,8 +20,8 @@ public:
 	BinTree(const BinTree &);				// copy constructor
 	~BinTree();								// destructor, calls makeEmpty	
 	bool isEmpty() const;					// true if tree is empty, otherwise false
-	void makeEmpty(Node *);						// make the tree empty so isEmpty returns true
-	void makeEmptyHelper(); 
+	void makeEmpty();						// make the tree empty so isEmpty returns true
+	void makeEmptyHelper(Node *);
 	BinTree& operator=(const BinTree &);
 	void recursiveAssign(Node *&, Node*) const; //recursively assigns
 	void recursiveAssignHelper(const BinTree &); 
@@ -36,7 +36,7 @@ public:
 	void printTreePreOrder(); 
 	void printTreePreeHelper(Node *); 
 	int BinTree::getHeight(const NodeData &);
-	int getHeightHelper(Node*, const NodeData &, bool &, int&);
+	int getHeightHelper(Node*, const NodeData &, int&);
 	
 
 	
