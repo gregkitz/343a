@@ -1,93 +1,115 @@
+//Gregory Kitzmiller
+//343 Min Chen 
+//Lab2
+// Binary Search tree class. Contains all of the necessary functions to 
+// create a binary search tree using the nodeData class and delete, assign,
+// and copy. 
+// It has the additional functionaliy of being able to find the depth of a 
+// given node, retrieve a given node, and convert a binary
+// search tree to array or array to binary search tree. 
+//----------------------------------------------------------------------------
 #include "bintree.h"
+
+//----------------------------------------------------------------------------
+//Constructors/Destructors/Utility Functions
+//----------------------------------------------------------------------------
+//Default constructor
 
 	//Builds an empty tree
 	BinTree::BinTree(){
 		root = NULL; 
 	}// constructor
-
-	// copy constructor
+//----------------------------------------------------------------------------
+// copy constructor
+//Does a deep copy of an existing binary search tree. 
 	BinTree::BinTree(const BinTree & RHS){
 		recursiveAssign(root, RHS.root);
 
 	}		
+//----------------------------------------------------------------------------
+//Destructor
+//Empties out the remaining memory from a given binary search tree
 	BinTree::~BinTree(){
 	
 		makeEmpty(); 
 		//delete root; 
 		//root = NULL; 
 
-	} // destructor, calls makeEmpty	
+	} 
+
+//----------------------------------------------------------------------------
+//Is empty 
+//Returns true or false whether a tree has a null root pointer
 	bool BinTree::isEmpty() const{
 		return (root == NULL); 
 
-	}// true if tree is empty, otherwise false
-	//void makeEmpty();						// make the tree empty so isEmpty returns true
-	//BinTree& operator=(const BinTree &);
-	//bool operator==(const BinTree &) const;
-	//bool operator!=(const BinTree &) const;
+	}
+
+//-----------------------------------------------------------------------------
+//Printing function
+//prints using inorder transversal
+	ostream& operator<<(ostream& output, const BinTree& tree)
+	{
+		tree.inOrderTransversal(tree.root);
+		output << endl;
+		return output;
+	}
 //-----------------------------------------------------------------------------
 //Insert Function 
-//Precondition: 
-//Postcondition: 
+//Inserts a nodedata into a new tree. Declares memory for this. 
 
 	bool BinTree::insert(NodeData* dataptr)
 	{
-		Node* ptr = new Node; // exception is thrown if memory is not allocated
-		ptr->data = dataptr; //Link to current NodeData
-		dataptr = NULL; //Disconnect
-		ptr->left = ptr->right = NULL;
+		Node* newPtr = new Node; // new node to store data in 
+		newPtr->data = dataptr; //points it to the data
+		dataptr = NULL; //nulls out the passed pointer
+		newPtr->left = newPtr->right = NULL;
 		if (isEmpty())
 		{
-			root = ptr; //Empty, set as root
+			root = newPtr; 
 		}
 		else
 		{
 			Node* current = root;
 			bool inserted = false;
-			// if data is less than current data, insert in left subtree,
-			// otherwise insert in right subtree
+	
 			while (!inserted)
 			{
-			
-				if (*ptr->data == *current->data) //Duplicate found, dont allow insert
+				if (*newPtr->data == *current->data) //duplicate delete
 				{
-					
-					delete ptr; //Handle duplicate properly
-					ptr = NULL;
+					delete newPtr; 
+					newPtr = NULL;
 					return false;
 				}
-				else if (*ptr->data < *current->data)
+				else if (*newPtr->data < *current->data)//go left first w/ bst
 				{
-					if (current->left == NULL) // at leaf, insert left
+					if (current->left == NULL) 
 					{
-						current->left = ptr;
+						current->left = newPtr;
 						inserted = true;
 					}
 					else
-						current = current->left; // one step left
+						current = current->left; //transverse
 				}
 				else {
 					if (current->right == NULL)
-					{ // at leaf, insert right
-						current->right = ptr;
+					{ 
+						current->right = newPtr;
 						inserted = true;
 					}
 					else
-						current = current->right; // one step right
+						current = current->right; 
 				}
 			}
 		}
 		return true;
 	}
 
+
 		
-
-
-
-
-//Make empty helper. Checks root and if not null calls make empty
-//either way clears the root node at the end 
-
+//----------------------------------------------------------------------------
+//Make Empty
+//Expected function. Calls the recursive helper
 	void BinTree::makeEmpty(){
 		if (!isEmpty()){
 			//call make empty on the root 
@@ -96,7 +118,7 @@
 		}
 
 	}
-
+//----------------------------------------------------------------------------
 	//Delete root utility function 
 	//manages the memory of the root deletion 
 	void BinTree::deleteRoot(){
@@ -105,16 +127,15 @@
 		delete root; 
 
 	}
-//Make empty function. Manages the deletion and memory management of the Tree
-//Pre:
-//Post:
-
+//----------------------------------------------------------------------------
+//Make Empty Helper
+	//if the left child isn't null call make empty on it 
+	// if the right child isn't null call make empty on it 
+	// otherwise, delete the current node and it's child pointers
 	void BinTree::makeEmptyHelper(Node *& currentNode){
 		//clears the tree recursively 
 		
-		//if the left child isn't null call make empty on it 
-		// if the right child isn't null call make empty on it 
-		// otherwise, delete the current node and it's child pointers
+		
 		if (currentNode->left != NULL){
 			makeEmptyHelper(currentNode->left); 
 		}
@@ -127,8 +148,9 @@
 
 	}
 
-
-	//Assignment Operator 
+//----------------------------------------------------------------------------
+//Assignment Operator 
+// Clears "this" and assigns the righthand argument's values to it
 
 	BinTree& BinTree::operator=(const BinTree & RHS){
 		//remember to test for self-assignment
@@ -145,11 +167,9 @@
 
 		
 	}
-	
+//----------------------------------------------------------------------------	
 //RecursiveAssign
-//Assigns all of the data in one tree to another
-//Pre: the "toCopy" tree is NULL
-//Post: A deep copy of the RHS tree to the toCopy tree
+//Recursively copies the righthand to the passed root called "copied"
 
 	void BinTree::recursiveAssign(Node *& copied, Node* RHS) const {
 		//check if the current pointer is NULL (
@@ -201,6 +221,8 @@
 	
 
 	//Retrieve
+	//Takes a nodedata to find and a node data to store the found 
+	//results in
 	bool BinTree::retrieve(const NodeData& search, NodeData*& found) {
 		bool isFound = false;
 		retrieveHelper(root, search, found,isFound);
@@ -270,7 +292,10 @@
 		return height; 
 
 	}
-
+	//----------------------------------------------------------------------------
+	//Recursive get height
+	//Finds the deepest past based off a postorder transversal while
+	//tallying the backtracking
 	int BinTree::getHeightHelper(Node *& current, const NodeData & theNode,  int & theHeight){
 		if (!current) return 0;
 		int left_height = getHeightHelper(current->left, theNode, theHeight);
@@ -282,13 +307,19 @@
 	}
 
 
-
+	//----------------------------------------------------------------------------
+	//bstreeToArray
+	//converts a binary search tree to an array 
 
 	void BinTree::bstreeToArray(NodeData* tempArray[])
 	{
 		bstreeToArrayHelper(root, tempArray);
 		makeEmpty(); 
 	}
+	//----------------------------------------------------------------------------
+	// recursive method of filling binary search tree
+	//inorder transversal to fill it up while updating the array index
+	//using pointer arithmatic
 	int BinTree::bstreeToArrayHelper(Node* current, NodeData *tempArray[])
 	{
 		if (current == NULL) {
@@ -299,24 +330,28 @@
 		NodeData *temp;
 		temp = current->data; 
 		current->data = NULL; 
-		*(tempArray + left) = temp; 
+		*(tempArray + left) = temp; //pointer arithmatic updates index
 		temp = NULL; 
 		
 		int right = bstreeToArrayHelper(current->right, tempArray + left + 1);
 		return left + right + 1; 
 	}
-
+	//----------------------------------------------------------------------------
+	//starts at the middle of the array (typically where root would be)
+	//counts the indexes for the array
+	//recursively call helper function for calculations
+	//leaves temparray with NULLs
 	void BinTree::arrayToBSTree(NodeData* tempArray[])
 	{
 		int high = 0;
-		for (int i = 0; i < 100; i++) //Count how many indexs of array are used
+		for (int i = 0; i < 100; i++) 
 		{
 			if (tempArray[i] != NULL)
 				high++;
 			else
 				tempArray[i] = NULL;
 		}
-		//Recursively call helper function to perform calculations
+		
 		
 		arrayToBSTreeHelper(tempArray, root, 0, high - 1);
 	}
@@ -339,15 +374,8 @@
 			arrayToBSTreeHelper(tempArray, current, root + 1, high);
 		}
 	}
-
 	
 
-	ostream& operator<<(ostream& output, const BinTree& tree)
-	{
-		tree.inOrderTransversal(tree.root); 
-		output << endl;
-		return output;
-	}
 	void BinTree::inOrderTransversal(Node * current) const
 	{
 		if (current != NULL) //Traverse inorder and print data

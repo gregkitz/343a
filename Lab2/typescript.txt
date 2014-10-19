@@ -1,0 +1,114 @@
+Script started on Sat 18 Oct 2014 11:07:00 PM PDT
+gregkitz@uw1-320-05:~/343/LAB2$ scriptvalgrind ./a.outg++ lab1.cpp poly.cpp[5Pvalgrind ./a.outg++ lab1.cpp poly.cpp[5Pvalgrind ./a.out[10Pscript[Kscript[Kvalgrind ./a.out
+==2216== Memcheck, a memory error detector
+==2216== Copyright (C) 2002-2011, and GNU GPL'd, by Julian Seward et al.
+==2216== Using Valgrind-3.7.0 and LibVEX; rerun with -h for copyright info
+==2216== Command: ./a.out
+==2216== 
+Initial data:
+  iii not tttt eee r not and jj r eee pp r sssss eee not tttt ooo ff m m y z $$ 
+Tree Inorder:
+and eee ff iii jj m not ooo pp r sssss tttt y z 
+      z
+     y
+    tttt
+      sssss
+     r
+      pp
+       ooo
+   not
+     m
+    jj
+  iii
+    ff
+   eee
+    and
+Retrieve --> and:  found
+Retrieve --> not:  found
+Retrieve --> sss:  not found
+Height    --> and:  1
+Height    --> not:  5
+Height    --> sss:  0
+Height    --> tttt:  4
+Height    --> ooo:  1
+Height    --> y:  2
+T == T2?     equal
+T != first?  equal
+T == dup?    equal
+     z
+    y
+     tttt
+   sssss
+     r
+    pp
+     ooo
+  not
+     m
+    jj
+     iii
+   ff
+     eee
+    and
+---------------------------------------------------------------
+Initial data:
+  b a c b a c $$ 
+Tree Inorder:
+a b c 
+   c
+  b
+   a
+Retrieve --> and:  not found
+Retrieve --> not:  not found
+Retrieve --> sss:  not found
+Height    --> and:  0
+Height    --> not:  0
+Height    --> sss:  0
+Height    --> tttt:  0
+Height    --> ooo:  0
+Height    --> y:  0
+T == T2?     equal
+T != first?  not equal
+T == dup?    not equal
+   c
+  b
+   a
+---------------------------------------------------------------
+Initial data:
+  c b a $$ 
+Tree Inorder:
+a b c 
+  c
+   b
+    a
+Retrieve --> and:  not found
+Retrieve --> not:  not found
+Retrieve --> sss:  not found
+Height    --> and:  0
+Height    --> not:  0
+Height    --> sss:  0
+Height    --> tttt:  0
+Height    --> ooo:  0
+Height    --> y:  0
+T == T2?     equal
+T != first?  not equal
+T == dup?    not equal
+   c
+  b
+   a
+---------------------------------------------------------------
+Initial data:
+   
+l
+==2216== 
+==2216== HEAP SUMMARY:
+==2216==     in use at exit: 0 bytes in 0 blocks
+==2216==   total heap usage: 276 allocs, 276 frees, 13,884 bytes allocated
+==2216== 
+==2216== All heap blocks were freed -- no leaks are possible
+==2216== 
+==2216== For counts of detected and suppressed errors, rerun with: -v
+==2216== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 2 from 2)
+gregkitz@uw1-320-05:~/343/LAB2$ exit
+exit
+
+Script done on Sat 18 Oct 2014 11:07:17 PM PDT
