@@ -14,20 +14,20 @@ private:
 	// utility functions
 	void inorderHelper(...) const;
 	void sideways(Node*, int) const;			// provided below, helper for displaySideways()
-	void makeEmpty(Node *);						// make the tree empty so isEmpty returns true
+	
 public:
 	BinTree();								// constructor
 	BinTree(const BinTree &);				// copy constructor
 	~BinTree();								// destructor, calls makeEmpty	
 	bool isEmpty() const;					// true if tree is empty, otherwise false
-	
+	void makeEmpty(Node *);						// make the tree empty so isEmpty returns true
 	void makeEmptyHelper(); 
 	BinTree& operator=(const BinTree &);
 	void recursiveAssign(Node *&, Node*) const; //recursively assigns
 	void recursiveAssignHelper(const BinTree &); 
 	bool operator==(const BinTree &) ;
 	void recursiveEqualHelper(bool&, Node*, Node*); //recursive isEqual
-	bool operator!=(const BinTree &) const;
+	bool operator!=(const BinTree &) ;
 	bool insert(NodeData*);
 	bool retrieve(const NodeData&,NodeData*&) ; //look for the input, store in the righthand
 	void retrieveHelper(Node*,const NodeData&, NodeData*&, bool&); //recursive retrieve
@@ -35,6 +35,8 @@ public:
 	void deleteRoot(); 
 	void printTreePreOrder(); 
 	void printTreePreeHelper(Node *); 
+	int BinTree::getHeight(const NodeData &);
+	int getHeightHelper(Node*, const NodeData &, bool &, int&);
 	
 
 	

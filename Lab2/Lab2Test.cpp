@@ -16,11 +16,12 @@ int main() {
 	T.insert(J); 
 	Ja.insert(Jaa); 
 	T.printTreePreOrder(); 
+	cout << "thats the print" << endl;
 	BinTree U; 
 	U.recursiveAssignHelper(T); 
 	NodeData * Ka = new NodeData("parkingLot"); 
 	U.insert(Ka); 
-	U.printTreePreOrder(); 
+	//U.printTreePreOrder(); 
 	NodeData * found; 
 	NodeData X("powwow"); 
 	NodeData Y("meow"); 
@@ -31,7 +32,9 @@ int main() {
 	bool whaa = Ja == T; 
 	cout << "woo" << woo << "whaa" << whaa << "shoud e the same " << endl; 
 	cout << meow << "that's if they're equal" << endl; 
-
+	NodeData rrr("ruff");
+	int height = T.getHeight(rrr);
+	cout << height << "height" << endl;
 
 	int a; 
 	cin >> a; 

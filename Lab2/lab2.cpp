@@ -1,4 +1,4 @@
-//u// I will test your BinTree class using either this main or
+//// I will test your BinTree class using either this main or
 //// a very similar one, and this buildTree.  
 //// You will want to do thorough testing on your own, 
 //// which is done by altering the data.
@@ -77,10 +77,10 @@
 //		cout << "T == dup?    " << (T == dup ? "equal" : "not equal") << endl;
 //		dup = T;
 //
-//		// somewhat test bstreeToArray and arrayToBSTree
-//		T.bstreeToArray(ndArray);
-//		T.arrayToBSTree(ndArray);
-//		T.displaySideways();
+////		// somewhat test bstreeToArray and arrayToBSTree
+////		T.bstreeToArray(ndArray);
+////		T.arrayToBSTree(ndArray);
+////		T.displaySideways();
 //
 //		T.makeEmpty();                  // empty out the tree
 //		initArray(ndArray);             // empty out the array

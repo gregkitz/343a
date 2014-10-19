@@ -225,6 +225,12 @@
 			return areEqual; 
 	}
 
+	//negates the == operator
+	bool BinTree::operator!=(const BinTree & RHS) {
+		return !(*this == RHS); 
+
+	}
+
 	void BinTree::recursiveEqualHelper(bool& isEqual, Node* current, Node* RHS){
 		//only check and recurse if they're not NULL
 		if (current != NULL && RHS != NULL){
@@ -244,4 +250,22 @@
 		if (current == NULL ^ RHS == NULL){
 			isEqual = false;
 		}
+	}
+
+	int BinTree::getHeight(const NodeData & toFind) {
+		int height = 0; 
+		bool isFound = false; 
+		height = getHeightHelper(root, toFind, isFound, height); 
+		return height; 
+
+	}
+
+	int BinTree::getHeightHelper(Node * current, const NodeData & theNode, bool & isFound, int & theHeight){
+		if (!current) return 0;
+		int left_height = getHeightHelper(current->left, theNode, isFound, theHeight);
+		int right_height = getHeightHelper(current->right, theNode, isFound, theHeight);
+		if (*current->data == theNode){
+			theHeight = left_height > right_height ? left_height : right_height;
+		}
+		return (left_height > right_height) ? left_height + 1 : right_height + 1;
 	}
