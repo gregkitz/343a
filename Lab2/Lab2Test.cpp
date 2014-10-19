@@ -5,22 +5,34 @@ using namespace std;
 
 
 int main() {
-	BinTree T; 
-	NodeData * M; 
-	M = new NodeData("meow"); 
+	BinTree T, Ja; 
+	NodeData * M = new NodeData("Meow");
+	NodeData * Ma = new NodeData("Meow");
 	T.insert(M); 
-	NodeData *J; 
-	J = new NodeData("ruff"); 
+	Ja.insert(Ma);
+	NodeData *J = new NodeData("ruff"); 
+	NodeData *Jaa = new NodeData("ruff");
+	
 	T.insert(J); 
+	Ja.insert(Jaa); 
 	T.printTreePreOrder(); 
 	BinTree U; 
 	U.recursiveAssignHelper(T); 
+	NodeData * Ka = new NodeData("parkingLot"); 
+	U.insert(Ka); 
 	U.printTreePreOrder(); 
 	NodeData * found; 
 	NodeData X("powwow"); 
 	NodeData Y("meow"); 
 	bool c = T.retrieve(Y, found);
 	cout << c << " that's C" << endl;
+	bool meow = T == U; 
+	bool woo = T == Ja; 
+	bool whaa = Ja == T; 
+	cout << "woo" << woo << "whaa" << whaa << "shoud e the same " << endl; 
+	cout << meow << "that's if they're equal" << endl; 
+
+
 	int a; 
 	cin >> a; 
 }

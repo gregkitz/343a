@@ -31,55 +31,47 @@
 //Postcondition: 
 	
 	bool BinTree::insert(NodeData* dataPtr){
-		//Declare new node to insert 
-		Node* ptr = new Node; 
+		//Declare new node to insert
+		Node* ptr = new Node;
 		if (ptr == NULL) return false; //out of memory
-		ptr->data = dataPtr; 
-		ptr->left = ptr->right = NULL; 
+		ptr->data = dataPtr;
+		ptr->left = ptr->right = NULL;
 		if (isEmpty()){ //if the tree is empty insert to the root
-			root = ptr; 
+			root = ptr;
 		}
 		else{
-
 			Node* current = root; //walking pointer that starts at the root
-			bool inserted = false; 
-
-			//if item is less than the current insert into the left subtree, 
+			bool inserted = false;
+			//if item is less than the current insert into the left subtree,
 			//otherwise, insert into the right subtree
-
 			while (!inserted){
 				if (*ptr->data < *current->data){
 					if (current->left == NULL){
-						current->left = ptr; 
-						inserted = true; 
+						current->left = ptr;
+						inserted = true;
 					}
 					else {
-						current = current->left; 
+						current = current->left;
 					}
 				}
 				else{
 					if (current->right == NULL) {
-						current->right = ptr; 
-						inserted = true; 
+						current->right = ptr;
+						inserted = true;
 					}
 					else{
-						current = current->right; 
+						current = current->right;
 					}
-
 				}
-
-
 			}
-
-			return true; 
+			return true;
 		}
-		
-		//If the head is null, return false
-		//If the head
-
-
-
 	}
+		
+		
+
+
+
 
 //Make empty helper. Checks root and if not null calls make empty
 //either way clears the root node at the end 
@@ -226,13 +218,30 @@
 		found = NULL; //wasn't found
 
 	}
-	//Retrieve helper
-	//returns the return of a recursive function call all the way up
+	
+	bool BinTree::operator==(const BinTree & RHS) {
+		bool areEqual = true; 
+		recursiveEqualHelper(areEqual, root, RHS.root);
+			return areEqual; 
+	}
 
-	//checks the current node
-
-
-	//if found returns true
-
-	//otherwise checks left and right
-	//if still not found returns false 
+	void BinTree::recursiveEqualHelper(bool& isEqual, Node* current, Node* RHS){
+		//only check and recurse if they're not NULL
+		if (current != NULL && RHS != NULL){
+			//if they don't equal make the update and stop recursing
+			if (*current->data != *RHS->data){
+				isEqual = false;
+				cout << "I have determined that they are not equal " << endl; 
+			}
+			else{
+					//continue on LH and RH
+					recursiveEqualHelper(isEqual, current->left, RHS->left);
+					recursiveEqualHelper(isEqual, current->right, RHS->right);
+				
+			}
+			
+		}
+		if (current == NULL ^ RHS == NULL){
+			isEqual = false;
+		}
+	}

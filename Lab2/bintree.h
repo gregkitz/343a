@@ -25,7 +25,8 @@ public:
 	BinTree& operator=(const BinTree &);
 	void recursiveAssign(Node *&, Node*) const; //recursively assigns
 	void recursiveAssignHelper(const BinTree &); 
-	bool operator==(const BinTree &) const;
+	bool operator==(const BinTree &) ;
+	void recursiveEqualHelper(bool&, Node*, Node*); //recursive isEqual
 	bool operator!=(const BinTree &) const;
 	bool insert(NodeData*);
 	bool retrieve(const NodeData&,NodeData*&) ; //look for the input, store in the righthand
