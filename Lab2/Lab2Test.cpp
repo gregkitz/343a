@@ -16,7 +16,11 @@ int main() {
 	BinTree U; 
 	U.recursiveAssignHelper(T); 
 	U.printTreePreOrder(); 
-
+	NodeData * found; 
+	NodeData X("powwow"); 
+	NodeData Y("meow"); 
+	bool c = T.retrieve(Y, found);
+	cout << c << " that's C" << endl;
 	int a; 
 	cin >> a; 
 }

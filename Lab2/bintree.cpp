@@ -6,10 +6,8 @@
 	}// constructor
 
 	// copy constructor
-	BinTree::BinTree(const BinTree &){
-		//Use assignment operator? 
-
-
+	BinTree::BinTree(const BinTree & RHS){
+		recursiveAssign(root, RHS.root);
 
 	}		
 	BinTree::~BinTree(){
@@ -129,9 +127,19 @@
 	//Assignment Operator 
 
 	BinTree& BinTree::operator=(const BinTree & RHS){
+		//remember to test for self-assignment
+		if (this !=  &RHS){
+			makeEmpty(root); //clear current
+			recursiveAssign(root, RHS.root); //assign 
+			return *this; //return this' address
 
+		}
+		else{
+			return  *this;
 
-		return  *this; 
+		}
+
+		
 	}
 	
 //RecursiveAssign
@@ -188,4 +196,43 @@
 	}
 	
 
+	//Retrieve
+	bool BinTree::retrieve(const NodeData& search, NodeData*& found) {
+		bool isFound = false;
+		retrieveHelper(root, search, found,isFound);
+		return isFound; 
+	}
 
+	void BinTree::retrieveHelper(Node* current, const NodeData& search, NodeData*& found, bool& isFound){
+		if (current != NULL){
+			//compare current nodeData to search
+			if (*current->data == search){
+				isFound = true;
+				found = current->data;
+			}
+			//if they're the same update isFound to true
+
+			//otherwise continue to recurse through the LH and RH subtrees
+			//
+			else{
+				if (search < *current->data){
+					retrieveHelper(current->left, search, found, isFound);
+				}
+				else{
+					retrieveHelper(current->right, search, found, isFound);
+				}
+			}
+		}
+		found = NULL; //wasn't found
+
+	}
+	//Retrieve helper
+	//returns the return of a recursive function call all the way up
+
+	//checks the current node
+
+
+	//if found returns true
+
+	//otherwise checks left and right
+	//if still not found returns false 

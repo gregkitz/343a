@@ -28,7 +28,8 @@ public:
 	bool operator==(const BinTree &) const;
 	bool operator!=(const BinTree &) const;
 	bool insert(NodeData*);
-	bool retrieve(...) const;
+	bool retrieve(const NodeData&,NodeData*&) ; //look for the input, store in the righthand
+	void retrieveHelper(Node*,const NodeData&, NodeData*&, bool&); //recursive retrieve
 	void displaySideways() const;			// provided below, displays the tree sideways
 	void deleteRoot(); 
 	void printTreePreOrder(); 
