@@ -1,3 +1,5 @@
+
+
 #ifndef NODEDATA_H
 #define NODEDATA_H
 #include <string>
