@@ -41,15 +41,16 @@ public:
 	//Default constructor
 	//T initialized to all sets all dist to infinity, all visited to false, all path to 0 
 	GraphM(); //default constructor
+	void initArrayVisited(); //set all visited to false
+
 	void buildGraph(ifstream&); //insert data
-	
 	void insertEdge(const int, const int, const int); // insert an edge into graph between two given nodes 
-	void removeEdge(); //remove an edge between two given nodes
+	void removeEdge(const int& , const int& ); //remove an edge between two given nodes
 	void findShortestPath(); //find the shortest path between every node to every other node in the 
 		//graph, i.e., TableType T is updated with shortest path information
 	void displayAll() const; //uses couts to demonstrate that the algorithm works properly.
 	void display(const int, const int) const; //Display from/to data
-	void initArrayVisited(); //set all to "not visited" 
+	
 	void getPath(const int, const int) const; //Print path from/to node
 	void getPathData(const int, const int) const; //Print descriptions
 	int findNext(TableType[], int, int); //helper - find sallest unmarked V

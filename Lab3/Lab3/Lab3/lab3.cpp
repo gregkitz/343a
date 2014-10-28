@@ -33,13 +33,14 @@ int main() {
 		G.buildGraph(infile1);
 		if (infile1.eof())
 			break;
-		G.findShortestPath();
-		G.displayAll();              // display shortest distance, path to cout
-		G.display(3, 1);              // display path from node 3 to 1 to cout
-		G.display(1, 2);
-		G.display(1, 4);
+		//G.findShortestPath();
+		//G.displayAll();              // display shortest distance, path to cout
+		//G.display(3, 1);              // display path from node 3 to 1 to cout
+		//G.display(1, 2);
+		//G.display(1, 4);
 	}
-	
+	int m = 0; 
+	cin >> m; 
 	//// part 2 
 	//ifstream infile2("data32.txt");
 	//if (!infile2) {
