@@ -91,25 +91,33 @@ void GraphM::removeEdge(const int& source, const int& dest){
 //graph, i.e., TableType T is updated with shortest path information
 //This is dijkstra
 void GraphM::findShortestPath(){
-	int v; 
+	int v;
 	//Develop this algorithm from pseudocode
 	for (int source = 1; source <= size; source++) {
 		T[source][source].dist = 0;
-	// finds the shortest distance from sourceto all other nodes 
+		// finds the shortest distance from sourceto all other nodes 
 		for (int i = 1; i <= size; i++) {
-			if (T[source][i].visited == false && )
 
 
-				v = findNext; //find v smallest and unmarked, shortest distance
+
+			v = findNext(T[source], size); //find v smallest and unmarked, shortest distance
+			T[source][v].visited = true; 
 			//mark as visited
-			for (w adjacent to v) {
-				
-				if (w is not visited){
-					T[source][w].dist = min(T[source][w].dist, T[source][v].dist + C[V][W]);
+			for (int i = 0; i < size; i++) { //loop through all the adjacent nodes in adjacency matrix
+				//
+				if (C[v][i] != std::numeric_limits<int>::max()){ //if it's adjacent
+					if (T[v][i].visited == false){ //and not visited 
+						T[source][i].dist = T[source][i].dist < T[source][v].dist + C[v][i] ?
+							T[source][i].dist : T[source][v].dist + C[v][i];
+						T[source][i].path = v; //Add v to the path
+
+					}
+				}
 			}
 		}
 	}
-} 
+}
+	
 //----------------------------------------------------------------------------
 //set all to "not visited" 
 void GraphM::initArrayVisited(){
@@ -145,8 +153,21 @@ void GraphM::getPathData(const int, const int) const{
 } 
 //----------------------------------------------------------------------------
 //Find smallest unmarked V
+//Helper for dijkstras 
+//Finds next smallest unmarked vertex (shortest distance) 
+//PRE: Takes the the table 'T' of distances, passes the max amount to check
+// and the current node number to start looping from to look for smallest
+// dist from this node that hasn't been marked 
 //----------------------------------------------------------------------------
-int GraphM::findNext(TableType data[], int low, int high)
-{
-	return 3; 
+int GraphM::findNext(TableType data[], int endOfRow){
+	int shortestNode = std::numeric_limits<int>::max();
+	//loop from current position to end of row and find smallest unmarked 
+	for(int current = 1; current < endOfRow; current++){
+		if (data[current].visited == false){
+			shortestNode = shortestNode < data[current].dist ?
+			shortestNode : data[current].dist;
+		}
+
+	}
+	return shortestNode; 
 }

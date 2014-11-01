@@ -53,7 +53,7 @@ public:
 	
 	void getPath(const int, const int) const; //Print path from/to node
 	void getPathData(const int, const int) const; //Print descriptions
-	int findNext(TableType[], int, int); //helper - find sallest unmarked V
+	int findNext(TableType[], int); //helper - find sallest unmarked V
 
 	
 
