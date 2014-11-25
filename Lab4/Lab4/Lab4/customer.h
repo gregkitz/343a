@@ -6,6 +6,7 @@ using namespace std;
 class Customer{
 public:
 	Customer(); 
+	Customer(string,string,int);  //all-parameter constructor
 
 
 private:
