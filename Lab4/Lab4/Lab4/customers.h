@@ -10,7 +10,7 @@ public:
 private:
 	Customers(); 
     Customer*  createCustomer(string,string,int); // customer generator 
-
+    ifstream* stream; 
 
 
 };

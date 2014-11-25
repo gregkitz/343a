@@ -1,2 +1,3 @@
 #!/bin/bash
-gcc -o "video store" customer.cpp
+g++ -o "video_store" customer.cpp customers.cpp main.cpp
+./video_store
