@@ -1,6 +1,7 @@
 #ifndef _CUSTOMERS_H
 #define _CUSTOMERS_H
 #include "customer.h"
+#include "hashtable.h" 
 #include <fstream>
 #include <string> 
 
@@ -18,7 +19,7 @@ private:
 	
     Customer*  createCustomer(string,string,int); // customer generator 
     
-    Customer** hashTable; 
+    HashTable hashTable; 
 
 };
 

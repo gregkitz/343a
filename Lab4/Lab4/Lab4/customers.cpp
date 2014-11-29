@@ -21,13 +21,15 @@ bool Customers::initializeCustomers(ifstream& infile){
 
 		Customer * tempCust = createCustomer(firstName,lastName,id);
 
-		tempCust->PrintCustomer(); 
+		hashTable.insert(tempCust); 
+
+		//tempCust->PrintCustomer(); 
 
 		//cout << id << lastName << firstName << endl; 
 		
 	}
 
-	
+
 
 	return true;
 }
