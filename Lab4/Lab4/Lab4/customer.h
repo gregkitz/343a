@@ -6,15 +6,14 @@ using namespace std;
 class Customer{
 public:
 	Customer(); 
+	~Customer(); 
 	Customer(string,string,int);  //all-parameter constructor
-
+	void PrintCustomer(); 
 
 private:
 	string firstName; 
 	string lastName; 
 	int id; 
-
-
 };
 
 

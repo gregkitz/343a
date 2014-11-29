@@ -5,9 +5,11 @@ using namespace std;
 #include <iostream> 
 
 int main() { 
+		ifstream customerFile ("data4customers.txt");
 
-Customer bob(); 
-Customers sally(); 
-std::cout << "LOL" << endl; 
-return 0; 
+		Customer bob(); 
+		Customers sally; 
+		sally.initializeCustomers(customerFile); 
+
+	return 0; 
 }

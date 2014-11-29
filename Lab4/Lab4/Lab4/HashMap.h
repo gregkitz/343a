@@ -1,7 +1,7 @@
-#ifndef _HASHMAP_H
-#define _HASHMAP_H
+#ifndef _HASHTABLE_H
+#define _HASHTABLE_H
 #include "customer.h"
-class HashMap{
+class HashTable{
 public:
 	
 

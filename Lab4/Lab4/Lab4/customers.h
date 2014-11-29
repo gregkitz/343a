@@ -2,16 +2,23 @@
 #define _CUSTOMERS_H
 #include "customer.h"
 #include <fstream>
+#include <string> 
+
 class Customers{
+ 
+
 public:
-	bool initializeCustomers(const ifstream&  );   //takes the infile and creates new customers w/ it 
+    Customers(); 
+
+
+	bool initializeCustomers( ifstream&  );   //takes the infile and creates new customers w/ it 
 
 
 private:
-	Customers(); 
+	
     Customer*  createCustomer(string,string,int); // customer generator 
-    ifstream* stream; 
-
+    
+    Customer** hashTable; 
 
 };
 
