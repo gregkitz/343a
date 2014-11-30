@@ -4,6 +4,9 @@ using namespace std;
 #include <string> 
 
 class Customer{
+
+	friend ostream& operator<<(ostream& output, const Customer& cust);
+	
 public:
 	Customer(); 
 	~Customer(); 

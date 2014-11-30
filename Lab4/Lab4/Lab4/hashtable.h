@@ -7,7 +7,9 @@
 class HashTable{
 	public:
 		HashTable(); //default constructor 
+		~HashTable(); //destructor 
 		HashTable(int); //size the array based on int 
+		void printHash(); //prints out all the customers in the hash table 
 		void initializeHash(); //set all pointers to null
 		void clearHash(); //deletes all pointers in table 
 		bool insert(Customer*); //hashes a customer and inserts 

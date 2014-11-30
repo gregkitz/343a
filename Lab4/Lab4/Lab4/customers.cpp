@@ -10,7 +10,10 @@ Customers::Customers(){
 
 bool Customers::initializeCustomers(ifstream& infile){
 //ifstream infile ("data4customers.txt");  //declaring this here for testing purposes 
-
+if (!infile) {
+cout << "File could not be opened." << endl;
+return 1;    //1 is failure condition 
+}
 	while (!infile.eof()){
 		int id = 0; 
 		infile >> id; 
@@ -23,13 +26,11 @@ bool Customers::initializeCustomers(ifstream& infile){
 
 		hashTable.insert(tempCust); 
 
-		//tempCust->PrintCustomer(); 
-
-		//cout << id << lastName << firstName << endl; 
+		
 		
 	}
 
-
+		hashTable.clearHash(); 
 
 	return true;
 }

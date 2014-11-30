@@ -3,13 +3,19 @@ using namespace std;
 #include "customer.h"
 #include <iostream>
 
+ostream& operator<<(ostream & output, const Customer & customer){
+	output << customer.firstName << customer.lastName << customer.id << endl;
+	return output; 
+}
+
+
 	Customer::Customer(){
 
 
 	}
 	Customer::~Customer(){
-		cout << "meow" << endl; 
-         delete this; 
+		
+         
 
 	}
 	Customer::Customer(string firstNameP,string lastNameP,int idP){

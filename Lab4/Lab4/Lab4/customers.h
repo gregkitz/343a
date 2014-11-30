@@ -18,7 +18,6 @@ public:
 private:
 	
     Customer*  createCustomer(string,string,int); // customer generator 
-    
     HashTable hashTable; 
 
 };

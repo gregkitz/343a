@@ -5,7 +5,7 @@ using namespace std;
 #include <iostream> 
 
 int main() { 
-		ifstream customerFile ("data4customers.txt");
+		ifstream customerFile ("data4customers.txt"); //customers infile 
 
 		Customer bob(); 
 		Customers sally; 
