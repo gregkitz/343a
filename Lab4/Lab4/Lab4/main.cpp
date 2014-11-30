@@ -10,6 +10,7 @@ int main() {
 		Customer bob(); 
 		Customers sally; 
 		sally.initializeCustomers(customerFile); 
+		
 
 	return 0; 
 }

@@ -39,4 +39,8 @@ return 1;    //1 is failure condition
  	return new Customer(first,last,id); 
  }
 
+ void Customers::printCustomers(){
+ 	hashTable.printHash(); 
+ }
+
 	

@@ -17,7 +17,7 @@ class HashTable{
 
 
 	private:
-	   Customer** hashTable; 	
+	   Customer* hashTable [200]; 	
        int inserted; 
 
 
