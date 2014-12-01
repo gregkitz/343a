@@ -1,16 +1,20 @@
 using namespace std; 
-#include "customer.h"
-#include "customers.h"
+//#include "customer.h"
+//#include "customers.h"
+#include "rentalstore.h"
 
 #include <iostream> 
 
 int main() { 
 		ifstream customerFile ("data4customers.txt"); //customers infile 
-
-		Customer bob(); 
+		ifstream moviesFile ("data4movies.txt"); //movies infile 
+		/*Customer bob(); 
 		Customers sally; 
-		sally.initializeCustomers(customerFile); 
+		sally.initializeCustomers(customerFile); */
 		
+		RentalStore bob; 
+		bob.processMovies(moviesFile);  
+
 
 	return 0; 
 }

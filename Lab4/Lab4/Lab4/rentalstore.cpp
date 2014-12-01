@@ -1,9 +1,12 @@
 #include "rentalstore.h"
 #include <iostream> 
 #include <fstream> 
+#include <cstring> 
+#include <string> 
+#include <cstdlib>
 using namespace std; 
 
-bool RentalStore::processMovies(ifstream& infile){
+ void RentalStore::processMovies(ifstream& infile){
 	//try and open the file 
 	if (!infile) {
 	cout << "File could not be opened." << endl;
@@ -14,74 +17,90 @@ bool RentalStore::processMovies(ifstream& infile){
 				//if it can, read the first character to see what type to be processed
 				string type; 
 				getline (infile,type, ',');   
-				if (type == 'F'){
+				if (strcmp(type.c_str(), "F") == 0){
+					string tempInt; 
+					getline (infile,tempInt, ',');
+ 					
+					int count = atoi (tempInt.c_str()); 
+					
+					string director;
+					getline (infile,director,' ');    
+					string title; 
+					getline (infile,title,',');
+					int year;
+					 infile >> year; 
+
+					     //////TESTING BLOCK 
+
+							cout << count << director << title << year << endl; 
+
+
+					    ////END TESTING BLOCK 
+
+
+					//Comedy* tempComedy = createComedy(count, director, title, year); //create it 
+					//comedyTree.insert(tempComedy); //insert it into the comedy BST
+				}
+
+				else if (strcmp(type.c_str(), "D") == 0){
 					string tempInt; 
 					getline (infile,tempInt, ',');
  
-					int a = stoi (tempInt,nullptr,10); //string conversion function 
-					string b;
-					getline (infile,b,' ');
-					string c; 
-					getline (infile,c,',');
-					string d;
-					getline (infile,d,',');
-					int e;
-					e << infile; 
+					int count = atoi (tempInt.c_str()); 
+					string director;
+					getline (infile,director,' ');    
+					string title; 
+					getline (infile,title,',');
+					int year;
+					infile >> year; 
 
+								cout << count << director << title << year << endl; 
 
-					Comedy* tempComedy = createComedy(a, b, c, d, e); //create it 
-					comedyTree.insert(tempComedy); //insert it into the comedy BST
+					//Drama* tempDrama = createDrama(count, director, title, year);
+					//dramaTree.insert(tempDrama); 
 				}
 
-				else if (type == 'D'){
+				else if (strcmp(type.c_str(), "C") == 0){
 					string tempInt; 
 					getline (infile,tempInt, ',');
  
-					int a = stoi (tempInt,nullptr,10); //string conversion function 
-					string b;
-					getline (infile,b,' ');
-					string c; 
-					getline (infile,c,',');
-					string d;
-					getline (infile,d,',');
-					int e;
-					e << infile; 
+					int count = atoi (tempInt.c_str());  
+					string director;
+					getline (infile,director,' ');    
+					string title; 
+					getline (infile,title,',');
+					string majorActorFirst; 
+					string majorActorLast; 
+					infile >> majorActorFirst; 
+					infile >> majorActorLast; 
+					int yearMonth; 
+					int year;
+					infile >> yearMonth; 
+					infile >> year;
 
-					Drama* tempDrama = createDrama(a, b, c, d, e); 
-					dramaTree.insert(tempDrama); 
-				}
+							cout << count << director << title << majorActorFirst << majorActorLast << yearMonth << year << endl; 
 
-				else if (type == 'C'){
-					int a; 
-					string b;
-					string c; 
-					string d;
-					string e; 
-					string f; 
-					int g;
-					int h; 
-
-					Classic* tempClassic = createClassic(a, b, c, d, e, f, g, h);
-					classicTree.insert(tempClassic); 
+					//Classic* tempClassic = createClassic(count, director, title, majorActorFirst, majorActorLast, yearMonth, year);
+					//classicTree.insert(tempClassic); 
 				}
 
 					//else condition handles invalid data 
 				else {
 						cout << "Invalid data!" << endl; 
 						string error; 
-						getline(ifstream,error); //should move read the next line of the file 
+						std::getline(infile,error); //should move read the next line of the file 
 						cout << error << endl; 
 				}
 		}
 	}
 }
 
-Comedy* RentalStore::createComedy(int, string, string, string, int){
+/*Comedy* RentalStore::createComedy(int, string, string, int){
 
 }
-Drama* RentalStore::createDrama(int, string, string, string, int){
+Drama* RentalStore::createDrama(int, string, string, int){
 
 }
-Classic* RentalStore::createClassic(int, string, string, string, string, string, int, int){
+Classic* RentalStore::createClassic(int, string, string, string, string, int, int){
 
-}
+}*/
