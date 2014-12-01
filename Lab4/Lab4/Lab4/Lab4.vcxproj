@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{5E0D9794-EC65-47CC-9EEC-097C67D2E418}</ProjectGuid>
+    <ProjectGuid>{377BD4B2-F962-4E23-AB59-CD67B2B8C276}</ProjectGuid>
     <RootNamespace>Lab4</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -64,44 +64,49 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="bintree.cpp" />
-    <ClCompile Include="borrow.cpp" />
-    <ClCompile Include="classics.cpp" />
-    <ClCompile Include="comedy.cpp" />
-    <ClCompile Include="commands.cpp" />
-    <ClCompile Include="commandsfactory.cpp" />
-    <ClCompile Include="customer.cpp" />
-    <ClCompile Include="customers.cpp" />
-    <ClCompile Include="drama.cpp" />
-    <ClCompile Include="dvdmedia.cpp" />
-    <ClCompile Include="dvdmediafactory.cpp" />
-    <ClCompile Include="HashMap.cpp" />
-    <ClCompile Include="history.cpp" />
-    <ClCompile Include="inventory.cpp" />
-    <ClCompile Include="nodedata.cpp" />
-    <ClCompile Include="rentalstore.cpp" />
-    <ClCompile Include="return.cpp" />
-    <ClCompile Include="storeinventory.cpp" />
+    <ClCompile Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\bintree.cpp" />
+    <ClCompile Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\borrow.cpp" />
+    <ClCompile Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\classics.cpp" />
+    <ClCompile Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\comedy.cpp" />
+    <ClCompile Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\commands.cpp" />
+    <ClCompile Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\commandsfactory.cpp" />
+    <ClCompile Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\customer.cpp" />
+    <ClCompile Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\customers.cpp" />
+    <ClCompile Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\drama.cpp" />
+    <ClCompile Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\dvdmedia.cpp" />
+    <ClCompile Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\dvdmediafactory.cpp" />
+    <ClCompile Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\hashtable.cpp" />
+    <ClCompile Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\history.cpp" />
+    <ClCompile Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\inventory.cpp" />
+    <ClCompile Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\main.cpp" />
+    <ClCompile Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\nodedata.cpp" />
+    <ClCompile Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\rentalstore.cpp" />
+    <ClCompile Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\return.cpp" />
+    <ClCompile Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\storeinventory.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="bintree.h" />
-    <ClInclude Include="borrow.h" />
-    <ClInclude Include="classics.h" />
-    <ClInclude Include="comedy.h" />
-    <ClInclude Include="commands.h" />
-    <ClInclude Include="commandsfactory.h" />
-    <ClInclude Include="customer.h" />
-    <ClInclude Include="customers.h" />
-    <ClInclude Include="drama.h" />
-    <ClInclude Include="dvdmedia.h" />
-    <ClInclude Include="dvdmediafactory.h" />
-    <ClInclude Include="HashMap.h" />
-    <ClInclude Include="history.h" />
-    <ClInclude Include="inentory.h" />
-    <ClInclude Include="nodedata.h" />
-    <ClInclude Include="rentalstore.h" />
-    <ClInclude Include="return.h" />
-    <ClInclude Include="storeinventory.h" />
+    <ClInclude Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\bintree.h" />
+    <ClInclude Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\borrow.h" />
+    <ClInclude Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\classics.h" />
+    <ClInclude Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\comedy.h" />
+    <ClInclude Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\commands.h" />
+    <ClInclude Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\commandsfactory.h" />
+    <ClInclude Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\customer.h" />
+    <ClInclude Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\customers.h" />
+    <ClInclude Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\drama.h" />
+    <ClInclude Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\dvdmedia.h" />
+    <ClInclude Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\dvdmediafactory.h" />
+    <ClInclude Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\HashMap.h" />
+    <ClInclude Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\hashtable.h" />
+    <ClInclude Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\history.h" />
+    <ClInclude Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\inentory.h" />
+    <ClInclude Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\nodedata.h" />
+    <ClInclude Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\rentalstore.h" />
+    <ClInclude Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\return.h" />
+    <ClInclude Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\storeinventory.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\..\Desktop\343\343a\Lab4\Lab4\Lab4\compile.sh" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
