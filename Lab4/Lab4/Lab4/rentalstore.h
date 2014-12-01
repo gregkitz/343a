@@ -7,6 +7,7 @@
 #include "comedy.h"
 #include "drama.h"
 #include "classics.h"
+#include "bintree.h"
 
 class RentalStore{
 public: 
@@ -18,7 +19,9 @@ public:
     bool handleInvalidData(); // for unrecognized characters from the first thing read in 
 private: 
 	Customers theCustomers; 
-
+    BinTree dramaTree; 
+    BinTree comedyTree; 
+    BinTree classicTree; 
 
 
 

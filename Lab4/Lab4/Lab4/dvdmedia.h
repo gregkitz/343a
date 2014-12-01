@@ -6,7 +6,7 @@
 using namespace std;
 
 // Base class
-class DvdMedia 
+class DvdMedia : public NodeData 
 {
    public:
       // getters and setters
