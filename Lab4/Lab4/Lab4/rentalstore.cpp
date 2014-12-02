@@ -10,97 +10,91 @@ using namespace std;
 	//try and open the file 
 	if (!infile) {
 	cout << "File could not be opened." << endl;
-	return 1;    //1 is failure condition 
+	//return 1;    //1 is failure condition 
 	}
 	else {
 		while (!infile.eof()){
-				//if it can, read the first character to see what type to be processed
-				string type; 
-				getline (infile,type, ',');   
-				if (strcmp(type.c_str(), "F") == 0){
-					string tempInt; 
-					getline (infile,tempInt, ',');
- 					
-					int count = atoi (tempInt.c_str()); 
+			string type; 
+
+			getline(infile, type, ',');
 					
-					string director;
-					getline (infile,director,' ');    
+			//cout << type << "hi" << endl; 
+
+			if (strcmp(type.c_str(), "F") == 0) {
+			
+					string count; 
+					string director; 
 					string title; 
-					getline (infile,title,',');
-					int year;
-					 infile >> year; 
+					string year; 
+					
+					
+					
+					getline(infile, count, ',');
+					getline(infile, director, ',');
+					getline(infile, title, ',');
+					getline(infile, year);
 
-					     //////TESTING BLOCK 
 
-							cout << count << director << title << year << endl; 
-
-
-					    ////END TESTING BLOCK 
-
+					cout << type << count << director << title << year << endl; 
 
 					//Comedy* tempComedy = createComedy(count, director, title, year); //create it 
 					//comedyTree.insert(tempComedy); //insert it into the comedy BST
 				}
+			else if (strcmp(type.c_str(), "D") == 0){
+				string count;
+				string director;
+				string title;
+				string year;
 
-				else if (strcmp(type.c_str(), "D") == 0){
-					string tempInt; 
-					getline (infile,tempInt, ',');
- 
-					int count = atoi (tempInt.c_str()); 
-					string director;
-					getline (infile,director,' ');    
-					string title; 
-					getline (infile,title,',');
-					int year;
-					infile >> year; 
 
-								cout << count << director << title << year << endl; 
 
-					//Drama* tempDrama = createDrama(count, director, title, year);
-					//dramaTree.insert(tempDrama); 
-				}
+				getline(infile, count, ',');
+				getline(infile, director, ',');
+				getline(infile, title, ',');
+				getline(infile, year);
 
-				else if (strcmp(type.c_str(), "C") == 0){
-					string tempInt; 
-					getline (infile,tempInt, ',');
- 
-					int count = atoi (tempInt.c_str());  
-					string director;
-					getline (infile,director,' ');    
-					string title; 
-					getline (infile,title,',');
-					string majorActorFirst; 
-					string majorActorLast; 
-					infile >> majorActorFirst; 
-					infile >> majorActorLast; 
-					int yearMonth; 
-					int year;
-					infile >> yearMonth; 
-					infile >> year;
 
-							cout << count << director << title << majorActorFirst << majorActorLast << yearMonth << year << endl; 
+				cout << type << count << director << title << year << endl;
+			
+				//Comedy* tempDrama = createComedy(count, director, title, year); //create it 
+				//dramaTree.insert(tempDrama); //insert it into the comedy BST
+			}
+			else if (strcmp(type.c_str(), "C") == 0){
+				string count;
+				string director;
+				string title;
+				string year;
 
-					//Classic* tempClassic = createClassic(count, director, title, majorActorFirst, majorActorLast, yearMonth, year);
-					//classicTree.insert(tempClassic); 
-				}
 
-					//else condition handles invalid data 
+
+				getline(infile, count, ',');
+				getline(infile, director, ',');
+				getline(infile, title, ',');
+				getline(infile, year);
+
+
+				cout << type << count << director << title << year << endl;
+			
+				//Classic* tempComedy = createClassic(count, director, title, year); //create it 
+				//classicTree.insert(tempClassic); //insert it into the comedy BST
+			}
+				
 				else {
-						cout << "Invalid data!" << endl; 
+					cout << "Invalid data: ";
 						string error; 
-						std::getline(infile,error); //should move read the next line of the file 
-						cout << error << endl; 
+						getline(infile,error); //should move read the next line of the file 
+						cout << type << error << endl; 
 				}
 		}
 	}
 }
 
-/*Comedy* RentalStore::createComedy(int, string, string, int){
+/*Comedy* RentalStore::createComedy(string, string, string, string){
 
 }
-Drama* RentalStore::createDrama(int, string, string, int){
+Drama* RentalStore::createDrama(string, string, string, string){
 
 }
-Classic* RentalStore::createClassic(int, string, string, string, string, int, int){
+Classic* RentalStore::createClassic(string, string, string, string){
 
 }*/

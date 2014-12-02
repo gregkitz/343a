@@ -1,6 +1,6 @@
 #ifndef _DVDMEDIA_H_
 #define _DVDMEDIA_H_
-
+#include "nodedata.h"
 #include <iostream>
  
 using namespace std;
@@ -9,31 +9,32 @@ using namespace std;
 class DvdMedia : public NodeData 
 {
    public:
-      // getters and setters
+      //constructor
+	    DvdMedia(string, string, string, string); 
+	   
+	   // getters and setters
 
    	  // getters
    		int getStock();
-   		string getDirectorFirst();
-   		string getDirectorLast(); 
+   		string getDirector();
    		string getTitle(); 
    		int getYear(); 
    		virtual void printMovie(); //prints all movie info  
 
    	  // setters
-   		setStock(const int&); 
-   		decrementStock(); 
-   		incrementStock(); 
-   		setDirectorFirst(const string&);
-   		setDirectorLast(const string&);
-   		setYear(const int&); 
-   		setTitle(const string&); 
+   		void setStock(const int&); 
+   		void decrementStock(); 
+   		void incrementStock(); 
+   		void setDirector(const string&);
+   		void setYear(const int&); 
+   		void setTitle(const string&); 
 
    protected:
       int stock;
-      string directorFirst;
-      string directorLast; 
+	  string director;
+      
       string title; 
-      int year; 
+      int  year; 
 };
 
 #endif

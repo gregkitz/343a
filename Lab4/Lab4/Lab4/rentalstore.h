@@ -20,10 +20,10 @@ class RentalStore{
 public: 
 	bool initializeCustomers();
     void processMovies(ifstream&); // builds movies from a file and puts them in the hash table 
-    //Comedy* createComedy(int, string, string, int); 
-    //Drama* createDrama(int, string, string, int); 
-    //Classic* createClassic(int, string, string, string, string, string, int, int); 
-    bool handleInvalidData(); // for unrecognized characters from the first thing read in 
+    //Comedy* createComedy(string, string, string, string); 
+    //Drama* createDrama(string, string, string, string); 
+    //Classic* createClassic(string, string, string, string); 
+    
 private: 
 	//Customers theCustomers; 
     // BinTree dramaTree; 
