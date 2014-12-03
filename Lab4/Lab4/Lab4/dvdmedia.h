@@ -36,16 +36,16 @@ class DvdMedia
    		void setTitle(const string&); 
 		virtual void display();
 
-		virtual bool DvdMedia::operator==(const DvdMedia& rhs) const {
+		virtual bool operator==(const DvdMedia& rhs) const {
 			return (stock == rhs.stock && strcmp(director.c_str(), rhs.director.c_str()) && strcmp(title.c_str(), rhs.title.c_str()));
 		}
 
-		virtual bool DvdMedia::operator!=(const DvdMedia& rhs) const {
+		virtual bool operator!=(const DvdMedia& rhs) const {
 			return !(stock == rhs.stock && director == director && title == title);
 		}
 
 		//------------------------ operator<,>,<=,>= ---------------------------------
-		virtual bool DvdMedia::operator<(const DvdMedia& rhs) const {
+		virtual bool operator<(const DvdMedia& rhs) const {
 			return strcmp(title.c_str(), rhs.title.c_str());
 		}
 
