@@ -1,16 +1,22 @@
 #ifndef _DVDMEDIA_H_
 #define _DVDMEDIA_H_
-#include "nodedata.h"
+
 #include <iostream>
+#include <string>
+#include <cstring> 
+#include <fstream>
  
 using namespace std;
 
 // Base class
-class DvdMedia : public NodeData 
+class DvdMedia 
 {
+
+	friend ostream & operator<<(ostream &,  DvdMedia &);
    public:
       //constructor
-	    DvdMedia(string, string, string, string); 
+	   DvdMedia(); 
+	   DvdMedia(string, string, string, string); 
 	   
 	   // getters and setters
 
@@ -28,6 +34,23 @@ class DvdMedia : public NodeData
    		void setDirector(const string&);
    		void setYear(const int&); 
    		void setTitle(const string&); 
+		virtual void display();
+
+		virtual bool DvdMedia::operator==(const DvdMedia& rhs) const {
+			return (stock == rhs.stock && strcmp(director.c_str(), rhs.director.c_str()) && strcmp(title.c_str(), rhs.title.c_str()));
+		}
+
+		virtual bool DvdMedia::operator!=(const DvdMedia& rhs) const {
+			return !(stock == rhs.stock && director == director && title == title);
+		}
+
+		//------------------------ operator<,>,<=,>= ---------------------------------
+		virtual bool DvdMedia::operator<(const DvdMedia& rhs) const {
+			return strcmp(title.c_str(), rhs.title.c_str());
+		}
+
+		
+
 
    protected:
       int stock;

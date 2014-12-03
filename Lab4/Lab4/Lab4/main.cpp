@@ -2,6 +2,7 @@ using namespace std;
 //#include "customer.h"
 //#include "customers.h"
 #include "rentalstore.h"
+#include "bintree.h"
 
 #include <iostream> 
 
@@ -14,6 +15,10 @@ int main() {
 		
 		RentalStore bob; 
 		bob.processMovies(moviesFile);  
+		//bob.classicTree->printTreePreOrder(); 
+		bob.comedyTree->printTreePreOrder(); 
+		//bob.dramaTree->printTreePreOrder(); 
+
 
 
 	return 0; 

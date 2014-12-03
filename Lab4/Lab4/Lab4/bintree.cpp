@@ -9,6 +9,7 @@
 // search tree to array or array to binary search tree. 
 //----------------------------------------------------------------------------
 #include "bintree.h"
+#include "dvdmedia.h"
 
 //----------------------------------------------------------------------------
 //Constructors/Destructors/Utility Functions
@@ -58,7 +59,7 @@
 //Insert Function 
 //Inserts a nodedata into a new tree. Declares memory for this. 
 
-	bool BinTree::insert(NodeData* dataptr)
+	bool BinTree::insert(DvdMedia* dataptr)
 	{
 		Node* newPtr = new Node; // new node to store data in 
 		newPtr->data = dataptr; //points it to the data
@@ -75,13 +76,13 @@
 	
 			while (!inserted)
 			{
-				if (*newPtr->data == *current->data) //duplicate delete
-				{
-					delete newPtr; 
-					newPtr = NULL;
-					return false;
-				}
-				else if (*newPtr->data < *current->data)//go left first w/ bst
+				//if (*newPtr->data == *current->data) //duplicate delete
+				//{
+				//	delete newPtr; 
+				//	newPtr = NULL;
+				//	return false;
+				//}
+				/*else*/ if (*newPtr->data < *current->data)//go left first w/ bst
 				{
 					if (current->left == NULL) 
 					{
@@ -177,7 +178,7 @@
 			//create new node object for insert
 			Node * temp = new Node;
 			//copy the data to a new nodeData object 
-			NodeData * tempNode = new NodeData(*RHS->data);
+			DvdMedia * tempNode = new DvdMedia(*RHS->data);
 			//Assign nodedata to new node
 			temp->data = tempNode;
 			//assign it to LHS
@@ -223,13 +224,13 @@
 	//Retrieve
 	//Takes a nodedata to find and a node data to store the found 
 	//results in
-	bool BinTree::retrieve(const NodeData& search, NodeData*& found) {
+	bool BinTree::retrieve(const DvdMedia& search, DvdMedia*& found) {
 		bool isFound = false;
 		retrieveHelper(root, search, found,isFound);
 		return isFound; 
 	}
 
-	void BinTree::retrieveHelper(Node* current, const NodeData& search, NodeData*& found, bool& isFound){
+	void BinTree::retrieveHelper(Node* current, const DvdMedia& search, DvdMedia*& found, bool& isFound){
 		if (current != NULL){
 			//compare current nodeData to search
 			if (*current->data == search){
@@ -286,7 +287,7 @@
 		}
 	}
 
-	int BinTree::getHeight(const NodeData & toFind) {
+	int BinTree::getHeight(const DvdMedia & toFind) {
 		int height = 0; 
 		getHeightHelper(root, toFind, height); 
 		return height; 
@@ -296,7 +297,7 @@
 	//Recursive get height
 	//Finds the deepest past based off a postorder transversal while
 	//tallying the backtracking
-	int BinTree::getHeightHelper(Node *& current, const NodeData & theNode,  int & theHeight){
+	int BinTree::getHeightHelper(Node *& current, const DvdMedia & theNode,  int & theHeight){
 		if (!current) return 0;
 		int left_height = getHeightHelper(current->left, theNode, theHeight);
 		int right_height = getHeightHelper(current->right, theNode,  theHeight);
@@ -311,7 +312,7 @@
 	//bstreeToArray
 	//converts a binary search tree to an array 
 
-	void BinTree::bstreeToArray(NodeData* tempArray[])
+	void BinTree::bstreeToArray(DvdMedia* tempArray[])
 	{
 		bstreeToArrayHelper(root, tempArray);
 		makeEmpty(); 
@@ -320,14 +321,14 @@
 	// recursive method of filling binary search tree
 	//inorder transversal to fill it up while updating the array index
 	//using pointer arithmatic
-	int BinTree::bstreeToArrayHelper(Node* current, NodeData *tempArray[])
+	int BinTree::bstreeToArrayHelper(Node* current, DvdMedia *tempArray[])
 	{
 		if (current == NULL) {
 			return 0;
 		}
 		
 		int left = bstreeToArrayHelper(current->left, tempArray);
-		NodeData *temp;
+		DvdMedia *temp;
 		temp = current->data; 
 		current->data = NULL; 
 		*(tempArray + left) = temp; //pointer arithmatic updates index
@@ -341,7 +342,7 @@
 	//counts the indexes for the array
 	//recursively call helper function for calculations
 	//leaves temparray with NULLs
-	void BinTree::arrayToBSTree(NodeData* tempArray[])
+	void BinTree::arrayToBSTree(DvdMedia* tempArray[])
 	{
 		int high = 0;
 		for (int i = 0; i < 100; i++) 
@@ -355,7 +356,7 @@
 		
 		arrayToBSTreeHelper(tempArray, root, 0, high - 1);
 	}
-	void BinTree::arrayToBSTreeHelper(NodeData* tempArray[], const Node* current, int low, int high)
+	void BinTree::arrayToBSTreeHelper(DvdMedia* tempArray[], const Node* current, int low, int high)
 	{
 		
 		if (low > high) //end
@@ -363,7 +364,7 @@
 		else
 		{
 			int root = (low + high) / 2; 
-			NodeData *temp;
+			DvdMedia *temp;
 			temp = tempArray[root];
 			tempArray[root] = NULL; 
 			

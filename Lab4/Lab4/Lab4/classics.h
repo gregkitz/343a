@@ -1,10 +1,16 @@
-#ifndef _RENTALSTORE_H
-#define _RENTALSTORE_H
+#ifndef _CLASSICS_H
+#define _CLASSICS_H
+#include "dvdmedia.h"
 
-class RentalStore{
+
+class Classic : public DvdMedia {
+
+
+
 public:
-
-
+	Classic(); 
+	Classic(string a, string b, string c, string d) : DvdMedia(a, b, c, d){}
+	
 
 private:
 

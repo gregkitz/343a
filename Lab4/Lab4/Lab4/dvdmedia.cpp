@@ -5,6 +5,15 @@
 #include <string> 
 #include <cstdlib>
 using namespace std; 
+ostream& operator<<(ostream& output,  DvdMedia& nd) {
+	nd.display(); 
+	return output;
+}
+
+void DvdMedia::display(){
+	cout << director << title << year << endl; 
+
+}
 
 
 DvdMedia::DvdMedia(string movies, string director_p, string title_p, string year_p){
@@ -21,7 +30,7 @@ int DvdMedia::getStock(){
 	return stock;
 }
 string DvdMedia::getDirector(){
-
+	return director; 
 }
 string DvdMedia::getTitle(){
 	return title; 

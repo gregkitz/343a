@@ -1,10 +1,15 @@
-#ifndef _RENTALSTORE_H
-#define _RENTALSTORE_H
+#ifndef _DRAMA_H
+#define _DRAMA_H
+#include "dvdmedia.h"
 
-class RentalStore{
+
+class Drama : public DvdMedia {
+
+
+
 public:
-
-
+	Drama(); 
+	Drama(string a, string b, string c, string d) : DvdMedia(a, b, c, d){}
 
 private:
 

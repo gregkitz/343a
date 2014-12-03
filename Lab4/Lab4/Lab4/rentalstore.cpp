@@ -1,10 +1,26 @@
 #include "rentalstore.h"
+#include "comedy.h"
+#include "drama.h"
+#include "classics.h"
+#include "bintree.h"
+
 #include <iostream> 
 #include <fstream> 
 #include <cstring> 
 #include <string> 
 #include <cstdlib>
 using namespace std; 
+RentalStore::RentalStore(){
+	comedyTree = new BinTree();
+	dramaTree = new BinTree();
+	classicTree = new BinTree();
+}
+
+RentalStore::~RentalStore(){
+	/*delete comedyTree; 
+	delete dramaTree;
+	delete classicTree; */
+}
 
  void RentalStore::processMovies(ifstream& infile){
 	//try and open the file 
@@ -37,8 +53,8 @@ using namespace std;
 
 					cout << type << count << director << title << year << endl; 
 
-					//Comedy* tempComedy = createComedy(count, director, title, year); //create it 
-					//comedyTree.insert(tempComedy); //insert it into the comedy BST
+					Comedy* tempComedy = createComedy(count, director, title, year); //create it 
+					comedyTree->insert(tempComedy); //insert it into the comedy BST
 				}
 			else if (strcmp(type.c_str(), "D") == 0){
 				string count;
@@ -56,8 +72,8 @@ using namespace std;
 
 				cout << type << count << director << title << year << endl;
 			
-				//Comedy* tempDrama = createComedy(count, director, title, year); //create it 
-				//dramaTree.insert(tempDrama); //insert it into the comedy BST
+				Drama* tempDrama = createDrama(count, director, title, year); //create it 
+				dramaTree->insert(tempDrama); //insert it into the comedy BST
 			}
 			else if (strcmp(type.c_str(), "C") == 0){
 				string count;
@@ -75,8 +91,8 @@ using namespace std;
 
 				cout << type << count << director << title << year << endl;
 			
-				//Classic* tempComedy = createClassic(count, director, title, year); //create it 
-				//classicTree.insert(tempClassic); //insert it into the comedy BST
+				Classic* tempClassic = createClassic(count, director, title, year); //create it 
+				classicTree->insert(tempClassic); //insert it into the comedy BST
 			}
 				
 				else {
@@ -89,12 +105,18 @@ using namespace std;
 	}
 }
 
-/*Comedy* RentalStore::createComedy(string, string, string, string){
 
+
+Comedy* RentalStore::createComedy(string count, string director, string title, string year){
+	
+	return new Comedy(count, director, title, year);
+	
 }
-Drama* RentalStore::createDrama(string, string, string, string){
-
+Drama* RentalStore::createDrama(string count, string director, string title, string year){
+	return new Drama(count, director, title, year);
+		
 }
-Classic* RentalStore::createClassic(string, string, string, string){
-
-}*/
+Classic* RentalStore::createClassic(string count, string director, string title, string year){
+	return new Classic(count, director, title, year);
+	
+}

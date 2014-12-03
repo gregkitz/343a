@@ -1,6 +1,6 @@
-#ifndef _BINTREE_H
+#ifndef _BINTREE_H_
 #define _BINTREE_H_
-#include "nodedata.h"
+#include "DvdMedia.h"
 //Gregory Kitzmiller
 //CSS 342 Min Chen
 //This Binary Search tree class contains basic functionality to 
@@ -19,7 +19,7 @@ class BinTree {
 
 private:
 	struct Node {
-		NodeData* data;						// pointer to data object
+		DvdMedia* data;						// pointer to data object
 		Node* left;							// left subtree pointer
 		Node* right;						// right subtree pointer
 	};
@@ -81,14 +81,14 @@ public:
 	//Post: NONE, negates ==
 	bool operator!=(const BinTree &) ;
 	//insert
-	//Pre: valid nodedata to insert and an uncurrupted bstree
+	//Pre: valid DvdMedia to insert and an uncurrupted bstree
 	//Post: node is inserted at a previous leaf
-	bool insert(NodeData*);
-	bool retrieve(const NodeData&,NodeData*&) ; //look for the input, store in the righthand
+	bool insert(DvdMedia*);
+	bool retrieve(const DvdMedia&,DvdMedia*&) ; //look for the input, store in the righthand
 	//retrieveHelper
 	//Pre: valid arguments
 	//Post: NONE
-	void retrieveHelper(Node*,const NodeData&, NodeData*&, bool&); //recursive retrieve
+	void retrieveHelper(Node*,const DvdMedia&, DvdMedia*&, bool&); //recursive retrieve
 	//displaySideways
 	//Pre: valid tree
 	//Post: sideways-displayed tree
@@ -108,11 +108,11 @@ public:
 	//getHeight
 	//Pre: valid tree with node passed
 	//Post: returns height of the node
-	int getHeight(const NodeData &);
+	int getHeight(const DvdMedia &);
 	//getHeightHelper
 	//Pre: Recursive helper
 	//Post: NONE
-	int getHeightHelper(Node*&, const NodeData &, int &);
+	int getHeightHelper(Node*&, const DvdMedia &, int &);
 	//inOrderTransversal
 	//Pre: valid tree
 	//Post: the value of the previous height +1
@@ -120,19 +120,19 @@ public:
 	//bstreeToArrayHelper
 	//Pre: valid tree
 	//Post: printed inorder
-	int bstreeToArrayHelper(Node* current, NodeData *tempArray[]);
+	int bstreeToArrayHelper(Node* current, DvdMedia *tempArray[]);
 	//bstreeToArray
 	//Pre: an array and a bstree
 	//Post: bstree is now in array
-	void bstreeToArray(NodeData* tempArray[]);
+	void bstreeToArray(DvdMedia* tempArray[]);
 	//arrayToBSTree
 	//Pre: valid array and bstree
 	//Post:tree is now in array
-	void arrayToBSTree(NodeData* tempArray[]);
+	void arrayToBSTree(DvdMedia* tempArray[]);
 	//arrayToBSTreeHelper
 	//Pre: valid array and bbstree
 	//Post:array is now bstree
-	void arrayToBSTreeHelper(NodeData* tempArray[], const Node* current, int low, int high);
+	void arrayToBSTreeHelper(DvdMedia* tempArray[], const Node* current, int low, int high);
 
 	
 
