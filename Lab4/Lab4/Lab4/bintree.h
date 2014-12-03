@@ -1,6 +1,6 @@
 #ifndef _BINTREE_H_
 #define _BINTREE_H_
-#include "DvdMedia.h"
+#include "dvdmedia.h"
 //Gregory Kitzmiller
 //CSS 342 Min Chen
 //This Binary Search tree class contains basic functionality to 

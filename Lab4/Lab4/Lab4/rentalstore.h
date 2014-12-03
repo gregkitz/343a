@@ -6,8 +6,10 @@
 #include "customers.h"
 #include "comedy.h"
 #include "drama.h"
+#include "dvdmedia.h"
 #include "classics.h"
 #include "bintree.h"
+
 #include <iostream> 
 #include <fstream> 
 #include <cstring> 

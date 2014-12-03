@@ -17,9 +17,9 @@ RentalStore::RentalStore(){
 }
 
 RentalStore::~RentalStore(){
-	/*delete comedyTree; 
+	delete comedyTree; 
 	delete dramaTree;
-	delete classicTree; */
+	delete classicTree; 
 }
 
  void RentalStore::processMovies(ifstream& infile){
