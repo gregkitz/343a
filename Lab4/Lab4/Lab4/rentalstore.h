@@ -42,8 +42,8 @@ public:
 	Borrow* createClassic(char, int, int, string, string);
 	Borrow* createComedy(char, string, int);
 	Borrow* createDrama(char, string, string);
-	History* RentalStore::createHistory(char type, int customerID);
-	Inventory* RentalStore::createInventory(char type);
+	History* createHistory(char type, int customerID);
+	Inventory* createInventory(char type);
 	BinTree* dramaTree;
 	BinTree* comedyTree;
 	BinTree* classicTree;
