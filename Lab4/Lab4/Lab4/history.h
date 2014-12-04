@@ -1,10 +1,21 @@
-#ifndef _RENTALSTORE_H
-#define _RENTALSTORE_H
+#include <string> 
+#include "command.h"
+#include <iostream>
+using namespace std;
+#ifndef _HISTORY_H_
+#define _HISTORY_H_
 
-class RentalStore{
+class History : public Command {
+
+
 public:
-
-
+	void display(){
+		cout << "Borrowed: " << title << endl;
+	}
+	History(char type, int custID){ 
+		commandType = type; 
+		customerID = custID; 
+	}
 
 private:
 

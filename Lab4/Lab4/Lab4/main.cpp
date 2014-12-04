@@ -10,6 +10,7 @@ using namespace std;
 int main() { 
 		ifstream customerFile ("data4customers.txt"); //customers infile 
 		ifstream moviesFile ("data4movies.txt"); //movies infile 
+		ifstream commandsFile("data4commands.txt");
 		//Customer bob(); 
 		Customers sally; 
 		sally.initializeCustomers(customerFile);
@@ -20,6 +21,7 @@ int main() {
 		bob.comedyTree->printTreePreOrder(); 
 		bob.dramaTree->printTreePreOrder(); 
 		//sally.printCustomers(); 
+		bob.loadCommands(commandsFile); 
 
 
 

@@ -9,12 +9,16 @@
 #include "dvdmedia.h"
 #include "classics.h"
 #include "bintree.h"
-
+#include "borrow.h"
+#include "history.h"
+#include "inentory.h"
+#include "command.h"
 #include <iostream> 
 #include <fstream> 
 #include <cstring> 
 #include <string> 
 #include <cstdlib>
+#include <queue> 
 
 using namespace std; 
 
@@ -35,6 +39,11 @@ public:
     Drama* createDrama(string, string, string, string); 
     Classic* createClassic(string, string, string, string); 
     
+	Borrow* createClassic(char, int, int, string, string);
+	Borrow* createComedy(char, string, int);
+	Borrow* createDrama(char, string, string);
+	History* RentalStore::createHistory(char type, int customerID);
+	Inventory* RentalStore::createInventory(char type);
 	BinTree* dramaTree;
 	BinTree* comedyTree;
 	BinTree* classicTree;
@@ -42,6 +51,7 @@ public:
 
 private: 
 	Customers theCustomers; 
+	queue<Command*> theCommands; 
     
 
 
