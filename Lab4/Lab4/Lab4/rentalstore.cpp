@@ -24,6 +24,16 @@ RentalStore::~RentalStore(){
 	delete classicTree; 
 }
 
+void RentalStore::runCommands(){
+	while (! theCommands.empty()){
+		Command* temp = theCommands.front();
+			theCommands.pop(); 
+
+	}
+	
+
+
+}
 
 void RentalStore::loadCommands(ifstream& infile){
 	if (!infile) {

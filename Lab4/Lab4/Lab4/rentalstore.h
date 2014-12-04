@@ -32,7 +32,7 @@ public:
 	void processCommands(); // pops command and processes it 
 	void processBorrow(Command&); 
 	void processReturn(Command&); 
-	void processInventory(); 
+	void runCommands(); 
 	void processHistory(Command&); //helper functions for processing commands 
 
     Comedy* createComedy(string, string, string, string); 
