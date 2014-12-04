@@ -1,4 +1,5 @@
 #include "customers.h"
+
 #include <fstream>
 #include <iostream>
 
@@ -6,7 +7,10 @@ using namespace std;
 Customers::Customers(){
 	
 }
+Customers::~Customers(){
 
+
+}
 
 bool Customers::initializeCustomers(ifstream& infile){
 //ifstream infile ("data4customers.txt");  //declaring this here for testing purposes 
@@ -30,7 +34,7 @@ return 1;    //1 is failure condition
 		
 	}
 
-		hashTable.clearHash(); 
+		//hashTable.clearHash(); 
 
 	return true;
 }

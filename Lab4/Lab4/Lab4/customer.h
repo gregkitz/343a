@@ -2,7 +2,8 @@
 #define _Customer_H
 using namespace std; 
 #include <string> 
-
+#include "command.h"
+#include <list> 
 class Customer{
 
 	friend ostream& operator<<(ostream& output, const Customer& cust);
@@ -17,6 +18,7 @@ private:
 	string firstName; 
 	string lastName; 
 	int id; 
+	list<Command> history;
 };
 
 

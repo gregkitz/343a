@@ -46,7 +46,8 @@ class DvdMedia
 
 		//------------------------ operator<,>,<=,>= ---------------------------------
 		virtual bool operator<(const DvdMedia& rhs) const {
-			return strcmp(title.c_str(), rhs.title.c_str());
+			int returnValue = strcmp(title.c_str(), rhs.title.c_str());
+			return returnValue; 
 		}
 
 		

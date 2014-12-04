@@ -24,6 +24,13 @@ public:
 	~RentalStore(); 
 	bool initializeCustomers();
     void processMovies(ifstream&); // builds movies from a file and puts them in the hash table 
+	void loadCommands(ifstream&); // builds commands from file and loads them into queue 
+	void processCommands(); // pops command and processes it 
+	void processBorrow(Command&); 
+	void processReturn(Command&); 
+	void processInventory(); 
+	void processHistory(Command&); //helper functions for processing commands 
+
     Comedy* createComedy(string, string, string, string); 
     Drama* createDrama(string, string, string, string); 
     Classic* createClassic(string, string, string, string); 
@@ -34,7 +41,7 @@ public:
 
 
 private: 
-	//Customers theCustomers; 
+	Customers theCustomers; 
     
 
 

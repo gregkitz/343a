@@ -1,9 +1,18 @@
-#ifndef _RENTALSTORE_H
-#define _RENTALSTORE_H
+#include <string> 
+#include "command.h"
+#include <iostream>
+using namespace std;
+#ifndef _BORROW_H_
+#define _BORROW_H_
 
-class RentalStore{
+class Borrow : public Command {
+
+
+
 public:
-
+	void display(){
+		cout << "Borrowed: " << title << endl; 
+	}
 
 
 private:

@@ -22,6 +22,44 @@ RentalStore::~RentalStore(){
 	delete classicTree; 
 }
 
+
+void RentalStore::loadCommands(ifstream& infile){
+	if (!infile) {
+		cout << "File could not be opened." << endl;
+		
+	}
+	else {
+		while (!infile.eof()){
+			char type;
+			infile >> type;
+
+			if (type == 'B'){
+				//create borrow obj and insert
+				//
+
+			}
+			else if (type == 'R'){
+
+			}
+			else if (type == 'I'){
+
+			}
+			else if (type == 'H'){
+
+			}
+			else {
+				cout << "Command not recognized. " << endl;
+			}
+
+
+
+		}
+
+
+	}
+
+}
+
  void RentalStore::processMovies(ifstream& infile){
 	//try and open the file 
 	if (!infile) {

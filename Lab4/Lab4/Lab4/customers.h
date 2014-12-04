@@ -13,7 +13,7 @@ class Customers{
 public:
     Customers(); 
     void printCustomers(); //calls the hash table print function 
-
+	~Customers(); 
 	bool initializeCustomers( ifstream&  );   //takes the infile and creates new customers w/ it 
 
 

@@ -10,15 +10,16 @@ using namespace std;
 int main() { 
 		ifstream customerFile ("data4customers.txt"); //customers infile 
 		ifstream moviesFile ("data4movies.txt"); //movies infile 
-		/*Customer bob(); 
+		//Customer bob(); 
 		Customers sally; 
-		sally.initializeCustomers(customerFile); */
+		sally.initializeCustomers(customerFile);
 		
 		RentalStore bob; 
 		bob.processMovies(moviesFile);  
 		bob.classicTree->printTreePreOrder(); 
 		bob.comedyTree->printTreePreOrder(); 
 		bob.dramaTree->printTreePreOrder(); 
+		//sally.printCustomers(); 
 
 
 
