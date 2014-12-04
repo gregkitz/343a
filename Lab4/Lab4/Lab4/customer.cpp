@@ -9,10 +9,11 @@ ostream& operator<<(ostream & output, const Customer & customer){
 }
 
 
-	Customer::Customer(){
-
-
-	}
+Customer::Customer(){
+	firstName = "";
+	lastName = "";
+	id = 0000;
+}
 	Customer::~Customer(){
 		
          

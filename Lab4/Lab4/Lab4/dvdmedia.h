@@ -15,7 +15,9 @@ class DvdMedia
 	friend ostream & operator<<(ostream &,  DvdMedia &);
    public:
       //constructor
-	   DvdMedia(); 
+	   DvdMedia(){
+
+	   }
 	   DvdMedia(string, string, string, string); 
 	   
 	   // getters and setters

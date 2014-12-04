@@ -47,10 +47,10 @@ public:
 	BinTree* dramaTree;
 	BinTree* comedyTree;
 	BinTree* classicTree;
-
+	Customers theCustomers;
 
 private: 
-	Customers theCustomers; 
+	
 	queue<Command*> theCommands; 
     
 

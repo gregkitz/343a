@@ -29,6 +29,57 @@ void RentalStore::runCommands(){
 		Command* temp = theCommands.front();
 			theCommands.pop(); 
 
+			if (temp->getType() == 'B' || temp->getType() == 'R'){
+				//determine which tree to look in 
+				if (temp->getMovieType() == 'C'){
+					Classic* search = new Classic(temp->getRleaseMonth(), temp->getReleaseYear(), temp->getMainActor());
+					DvdMedia* tempFound;
+					if (!(classicTree->retrieve(*search, tempFound))){
+						cout << "Not found in inventory" << endl; 
+					}
+					else {
+						if (temp->getType() == 'B'){
+							tempFound->decrementStock(); 
+						}
+						else if (temp->getType() == 'R'){
+							tempFound->incrementStock(); 
+						}
+					}
+					temp->itemInQuestion = tempFound; // store the pointer 
+					theCustomers.hashTable.insertCommand(temp->getCustomerID(), temp); // find the customer and store this into customer's list of commands 
+					
+				}
+				else if (temp->getMovieType() == 'D'){
+					
+				}
+				else if (temp->getMovieType() == 'F'){
+					
+				}
+				else {
+					cout << "media type not found" << endl; 
+					delete temp; 
+					temp = NULL; 
+				}
+
+
+				//find if it's in stock 
+				//if it's in stock decriment the stock and save a pointer to it 
+				//if it's not return an error message
+				//then, find the customer in the hash and save the borrow object there
+			}
+			
+			else if (temp->getType() == 'I'){
+				comedyTree->printTreePreOrder(); 
+				dramaTree->printTreePreOrder(); 
+				classicTree->printTreePreOrder(); 
+			}
+			else if (temp-> getType() == 'H'){
+				theCustomers.hashTable.printHistory(temp->getCustomerID());
+			}
+			else {
+				cout << "Command not recognized in parsing queue." << endl; 
+			}
+
 	}
 	
 

@@ -14,8 +14,8 @@ class HashTable{
 		void clearHash(); //deletes all pointers in table 
 		bool insert(Customer*); //hashes a customer and inserts 
 		bool poke(Customer*); //poking algorithm 
-
-
+		void insertCommand(int, Command*); //
+		void printHistory(int customerNumber);
 	private:
 	   Customer* hashTable [200]; 	
        int inserted; 

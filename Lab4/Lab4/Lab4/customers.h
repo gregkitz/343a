@@ -15,12 +15,12 @@ public:
     void printCustomers(); //calls the hash table print function 
 	~Customers(); 
 	bool initializeCustomers( ifstream&  );   //takes the infile and creates new customers w/ it 
-
+	HashTable hashTable;
 
 private:
 	
     Customer*  createCustomer(string,string,int); // customer generator 
-    HashTable hashTable; 
+     
 
 };
 

@@ -7,10 +7,44 @@
 
 using namespace std;
 class Command {
-	friend ostream & operator<<(ostream &, Command &);
+	friend ostream & operator<<(ostream & theStream, Command & theCommand){
+		
+		theCommand.print(); 
+		
+		
+	}
 public:
+
+	DvdMedia* itemInQuestion;
 	virtual void display(){
 
+	}
+	char getType(){
+		return commandType; 
+	}
+	char getCommandType(){
+		return commandType; 
+	}
+	char getMovieType(){
+		return movieType; 
+	}
+	void print(){
+		if (commandType == 'B') cout << "Borrow: "; 
+		if (commandType == 'R') cout << "Return: "; 
+		
+		cout << customerID << releaseMonth << title << mainActor; 
+	}
+	int getRleaseMonth(){
+		return releaseMonth; 
+	}
+	int getReleaseYear(){
+		return releaseYear; 
+	}
+	string getMainActor(){
+		return mainActor; 
+	}
+	int getCustomerID(){
+		return customerID; 
 	}
 	Command(){}
 	Command(char type, int month,int year,string actorFirst,string actorLast){
@@ -49,7 +83,7 @@ protected:
 	char movieType; 
 	
 
-	DvdMedia* itemInQuestion;
+	
 
 private: 
 };

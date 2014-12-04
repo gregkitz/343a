@@ -35,6 +35,30 @@ void HashTable::clearHash(){
 
 }
 
+void HashTable::insertCommand(int customerNumber, Command* theCommand){
+	//find the customer 
+	for (int i = 0; i < 200; i++){
+		if (hashTable[i]->returnID() == customerNumber){
+			hashTable[i]->insertCommand(theCommand);
+		}
+	}
+
+}
+
+void HashTable::printHistory(int customerNumber) {
+	std::list<Command*>::const_iterator iterator;
+	for (int i = 0; i < 200; i++){
+		if (hashTable[i] != NULL )
+		if (hashTable[i]->id == customerNumber){
+			for (iterator = hashTable[i]->history.begin(); iterator != hashTable[i]->history.end(); ++iterator) {
+				cout << *iterator;
+				
+			}
+		}
+	}
+
+}
+
 
 bool HashTable::insert(Customer* customer){ 
     hashTable[inserted] = customer; 

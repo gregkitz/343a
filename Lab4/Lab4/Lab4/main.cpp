@@ -12,17 +12,18 @@ int main() {
 		ifstream moviesFile ("data4movies.txt"); //movies infile 
 		ifstream commandsFile("data4commands.txt");
 		//Customer bob(); 
-		Customers sally; 
-		sally.initializeCustomers(customerFile);
+	
+		
 		
 		RentalStore bob; 
+		bob.theCustomers.initializeCustomers(customerFile);
 		bob.processMovies(moviesFile);  
 		bob.classicTree->printTreePreOrder(); 
 		bob.comedyTree->printTreePreOrder(); 
 		bob.dramaTree->printTreePreOrder(); 
 		//sally.printCustomers(); 
 		bob.loadCommands(commandsFile); 
-
+		//bob.runCommands(); 
 
 
 	return 0; 
